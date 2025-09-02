@@ -140,10 +140,10 @@ export default function ServiceBanner({ image, data, form_head }) {
       <Container className="py-10 font-barlow relative z-10 mt-10 md:mt-0">
         <div className="w-full grid grid-cols-1 md:grid-cols-banner gap-10 md:gap-[66px] text-white">
           <div className="relative -mt-10 flex items-center md:items-start flex-col lg:pr-10 justify-center">
-            <div className="bg-gradient-to-br  from-blue-800 to-sky-300 rounded-full text-5xl md:text-7xl font-bold aspect-square h-28 md:h-32 w-28 md:w-32 flex items-center justify-center">
+            {/* <div className="bg-gradient-to-br  from-blue-800 to-sky-300 rounded-full text-5xl md:text-7xl font-bold aspect-square h-28 md:h-32 w-28 md:w-32 flex items-center justify-center">
               <sup className="text-3xl">$</sup>
-              {data?.price || "80"}
-            </div>
+              {data?.price || "80"}49
+            </div> */}
 
             <h1 className="font-[900] uppercase text-[28px] mt-3 px-4 md:px-0 md:text-6xl leading-tight text-center md:text-start lg:text-left text-shadow-lg">
               {data?.heading?.replaceAll(

@@ -55,19 +55,19 @@ const PromotionCard = ({
 
       {price && (
         <div className=" text-center">
-          <div className="flex flex-col items-center justify-center">
+          {/* <div className="flex flex-col items-center justify-center">
             <span className="text-5xl font-extrabold">
               {" "}
               {price !== "Free Estimate" && "$"}
               {price}
             </span>
-          </div>
+          </div> */}
           {serviceTitle && (
             <div className="uppercase text-2xl font-semibold mt-2 leading-tight">
               {serviceTitle}
             </div>
           )}
-          {originalPrice && (
+          {/* {originalPrice && (
             <div className="mt-2 text-lg font-semibold">
               <span className="relative inline-block align-middle">
                 <span
@@ -101,7 +101,7 @@ const PromotionCard = ({
                 </svg>
               </span>
             </div>
-          )}
+          )} */}
           <div className="border-b border-dotted border-white/60 border-blue-950 w-3/4 mx-auto my-4" />
         </div>
       )}
@@ -143,7 +143,7 @@ const FullMonthPromotion = ({ prices }) => {
       <Container>
         <div className="w-full py-12">
           <h2 className="text-4xl font-extrabold text-center text-blue-950 mb-8 tracking-tight">
-            Full Month Promotion
+           Monthly Promotion
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 w-full">
             {/* Left Card - Either Why Choose Us or Price3 */}
