@@ -158,8 +158,9 @@ export default function Banner({
   return (
     <FullContainer className="relative bg-white overflow-hidden w-full md:!h-[790px] lg:!h-auto">
     <div className="absolute inset-0 w-full h-[600px] md:min-h-[790px] overflow-hidden">
+    
       <Image
-        src="/st-images/hero.webp"
+        src={image}
         title={data?.imageTitle || data?.title || "Banner"}
         alt={data?.altImage || data?.tagline || "No Banner Found"}
         priority={true}
@@ -167,6 +168,7 @@ export default function Banner({
         sizes="100vw"
         className="w-full object-cover object-center"
       />
+      <div className="absolute inset-0 bg-gradient-to-b  from-black/60 via-black/40 to-black/70"></div>
     </div>
 
     <Container className="py-20 font-barlow relative z-10 mt-10 md:mt-0">
