@@ -1,0 +1,16 @@
+{
+  "name": "Service Website",
+  "short_name": "Service App",
+  "description": "Professional service website",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#008DE5",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+} 
