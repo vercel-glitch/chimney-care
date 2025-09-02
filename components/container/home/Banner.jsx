@@ -26,6 +26,7 @@ export default function Banner({
   data,
   form_head,
   features,
+  phone,
 }) {
   const [formData, setFormData] = useState({
     first_name: "",
@@ -203,7 +204,7 @@ export default function Banner({
           <div className="">
             <button className="flex items-center gap-3 bg-gradient-to-br from-blue-800 via-sky-500 from-20% to-green-400 text-white px-6 py-3 rounded-full text-3xl font-semibold">
               <Phone className="w-6 h-6" />
-              {contact_info?.phone}
+              {phone}
             </button>
           </div>
         </div>
