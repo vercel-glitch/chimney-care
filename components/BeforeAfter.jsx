@@ -1,4 +1,10 @@
-import React, { useState, useRef, useEffect, useMemo, useCallback } from "react";
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  useMemo,
+  useCallback,
+} from "react";
 import Container from "./common/Container";
 import Image from "next/image";
 import FullContainer from "./common/FullContainer";
@@ -273,7 +279,6 @@ export default function BeforeAfter({ project_id, niche }) {
       after: "/st-images/beforeafter/hardScaping/ja4.webp",
       after_alt: "after",
     },
-    
   ];
   const locksmith = [
     {
@@ -301,32 +306,31 @@ export default function BeforeAfter({ project_id, niche }) {
       after_alt: "after",
     },
   ];
-    const Landscaping = [
-      {
-        before: "/st-images/beforeafter/landscaping/before1.webp",
-        before_alt: "before",
-        after: "/st-images/beforeafter/landscaping/after1.webp",
-        after_alt: "after",
-      },
-      {
-        before: "/st-images/beforeafter/landscaping/before2.webp",
-        before_alt: "before",
-        after: "/st-images/beforeafter/landscaping/after2.webp",
-        after_alt: "after",
-      },
-      {
-        before: "/st-images/beforeafter/landscaping/before3.webp",
-        before_alt: "before",
-        after: "/st-images/beforeafter/landscaping/after3.webp",
-        after_alt: "after",
-      },
-      {
-        before: "/st-images/beforeafter/landscaping/before4.webp",
-        before_alt: "before",
-        after: "/st-images/beforeafter/landscaping/after4.webp",
-        after_alt: "after",
-      },
-
+  const Landscaping = [
+    {
+      before: "/st-images/beforeafter/landscaping/before1.webp",
+      before_alt: "before",
+      after: "/st-images/beforeafter/landscaping/after1.webp",
+      after_alt: "after",
+    },
+    {
+      before: "/st-images/beforeafter/landscaping/before2.webp",
+      before_alt: "before",
+      after: "/st-images/beforeafter/landscaping/after2.webp",
+      after_alt: "after",
+    },
+    {
+      before: "/st-images/beforeafter/landscaping/before3.webp",
+      before_alt: "before",
+      after: "/st-images/beforeafter/landscaping/after3.webp",
+      after_alt: "after",
+    },
+    {
+      before: "/st-images/beforeafter/landscaping/before4.webp",
+      before_alt: "before",
+      after: "/st-images/beforeafter/landscaping/after4.webp",
+      after_alt: "after",
+    },
   ];
   const Bathroom = [
     {
@@ -354,7 +358,7 @@ export default function BeforeAfter({ project_id, niche }) {
       after_alt: "after",
     },
   ];
- 
+
   const GarageDoorRepair = [
     {
       before: "/st-images/beforeafter/garageDoor/before1.webp",
@@ -368,7 +372,7 @@ export default function BeforeAfter({ project_id, niche }) {
       after: "/st-images/beforeafter/garageDoor/after2.webp",
       after_alt: "after",
     },
-    
+
     {
       before: "/st-images/beforeafter/garageDoor/before3.webp",
       before_alt: "before",
@@ -381,7 +385,7 @@ export default function BeforeAfter({ project_id, niche }) {
       after: "/st-images/beforeafter/garageDoor/after4.webp",
       after_alt: "after",
     },
-  ]
+  ];
   const fireDamage = [
     {
       before: "/st-images/beforeafter/fireDamage/before1.jpg",
@@ -407,7 +411,7 @@ export default function BeforeAfter({ project_id, niche }) {
       after: "/st-images/beforeafter/fireDamage/after4.webp",
       after_alt: "after",
     },
-  ]
+  ];
   const moldRemoval = [
     {
       before: "/st-images/beforeafter/mold/before1.webp",
@@ -433,7 +437,7 @@ export default function BeforeAfter({ project_id, niche }) {
       after: "/st-images/beforeafter/mold/after4.webp",
       after_alt: "after",
     },
-  ]
+  ];
   const painting = [
     {
       before: "/st-images/beforeafter/painting/before1.webp",
@@ -447,7 +451,7 @@ export default function BeforeAfter({ project_id, niche }) {
       after: "/st-images/beforeafter/painting/after2.webp",
       after_alt: "after",
     },
-    
+
     {
       before: "/st-images/beforeafter/painting/before3.webp",
       before_alt: "before",
@@ -460,7 +464,7 @@ export default function BeforeAfter({ project_id, niche }) {
       after: "/st-images/beforeafter/painting/after4.webp",
       after_alt: "after",
     },
-  ]
+  ];
   const Moving = [
     {
       before: "/st-images/beforeafter/moving/before1.webp",
@@ -474,7 +478,7 @@ export default function BeforeAfter({ project_id, niche }) {
       after: "/st-images/beforeafter/moving/after2.webp",
       after_alt: "after",
     },
-    
+
     {
       before: "/st-images/beforeafter/moving/before3.webp",
       before_alt: "before",
@@ -496,24 +500,23 @@ export default function BeforeAfter({ project_id, niche }) {
       "Air Conditioning": airduct,
       "Dryervent Cleaning": dryervent,
       "Carpet Cleaning": carpet,
-      "Roofing": roofing,
+      Roofing: roofing,
       "Sliding Door": slidingDoor,
       "water damage": waterDamage,
-      "Construction": construction,
-      "Kitchen": kitchen,
-      "Hardscaping": hardScaping,
-      "Locksmith": locksmith,
-      "Landscaping": Landscaping,
-      "Bathroom": Bathroom,
+      Construction: construction,
+      Kitchen: kitchen,
+      Hardscaping: hardScaping,
+      Locksmith: locksmith,
+      Landscaping: Landscaping,
+      Bathroom: Bathroom,
       "Garage Door Repair": GarageDoorRepair,
       "Fire Damage": fireDamage,
       "Mold Removal": moldRemoval,
-      "Painting": painting,
-      "Moving": Moving,
+      Painting: painting,
+      Moving: Moving,
     };
     return imageMap[niche] || carpet;
   }, [niche]);
-
 
   return (
     <FullContainer>
@@ -563,57 +566,84 @@ function BeforeAfterSlider({ beforeImage, afterImage, beforeAlt, afterAlt }) {
     }
   }, []);
 
-  const handleMouseDown = useCallback((e) => {
-    e.preventDefault();
-    setIsActive(true);
-    updateContainerRect();
-    document.addEventListener("mousemove", handleMouseMove, { passive: false });
-    document.addEventListener("mouseup", handleMouseUp, { passive: true });
-  }, []);
-
-  const handleTouchStart = useCallback((e) => {
-    setIsActive(true);
-    updateContainerRect();
-    document.addEventListener("touchmove", handleTouchMove, { passive: false });
-    document.addEventListener("touchend", handleTouchEnd, { passive: true });
-  }, []);
-
   const handleMouseMove = useCallback((e) => {
-    if (isActive && containerRectRef.current) {
+    if (containerRectRef.current) {
       const containerRect = containerRectRef.current;
-      const position = ((e.clientX - containerRect.left) / containerRect.width) * 100;
+      const position =
+        ((e.clientX - containerRect.left) / containerRect.width) * 100;
       setSliderPosition(Math.max(0, Math.min(100, position)));
     }
-  }, [isActive]);
+  }, []);
 
   const handleTouchMove = useCallback((e) => {
-    if (isActive && containerRectRef.current && e.touches[0]) {
+    if (containerRectRef.current && e.touches[0]) {
       const containerRect = containerRectRef.current;
-      const position = ((e.touches[0].clientX - containerRect.left) / containerRect.width) * 100;
+      const position =
+        ((e.touches[0].clientX - containerRect.left) / containerRect.width) *
+        100;
       setSliderPosition(Math.max(0, Math.min(100, position)));
     }
-  }, [isActive]);
+  }, []);
 
   const handleMouseUp = useCallback(() => {
     setIsActive(false);
     document.removeEventListener("mousemove", handleMouseMove);
     document.removeEventListener("mouseup", handleMouseUp);
-  }, []);
+  }, [handleMouseMove]);
 
   const handleTouchEnd = useCallback(() => {
     setIsActive(false);
     document.removeEventListener("touchmove", handleTouchMove);
     document.removeEventListener("touchend", handleTouchEnd);
-  }, []);
+  }, [handleTouchMove]);
+
+  const handleMouseDown = useCallback(
+    (e) => {
+      e.preventDefault();
+      setIsActive(true);
+      updateContainerRect();
+      document.addEventListener("mousemove", handleMouseMove, {
+        passive: false,
+      });
+      document.addEventListener("mouseup", handleMouseUp, { passive: true });
+    },
+    [updateContainerRect, handleMouseMove, handleMouseUp]
+  );
+
+  const handleTouchStart = useCallback(
+    (e) => {
+      setIsActive(true);
+      updateContainerRect();
+      document.addEventListener("touchmove", handleTouchMove, {
+        passive: false,
+      });
+      document.addEventListener("touchend", handleTouchEnd, { passive: true });
+    },
+    [updateContainerRect, handleTouchMove, handleTouchEnd]
+  );
 
   useEffect(() => {
+    const handleResize = () => {
+      updateContainerRect();
+    };
+
+    window.addEventListener("resize", handleResize);
+    updateContainerRect(); // Initial rect calculation
+
     return () => {
+      window.removeEventListener("resize", handleResize);
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
       document.removeEventListener("touchmove", handleTouchMove);
       document.removeEventListener("touchend", handleTouchEnd);
     };
-  }, []);
+  }, [
+    updateContainerRect,
+    handleMouseMove,
+    handleMouseUp,
+    handleTouchMove,
+    handleTouchEnd,
+  ]);
 
   return (
     <div
@@ -624,7 +654,14 @@ function BeforeAfterSlider({ beforeImage, afterImage, beforeAlt, afterAlt }) {
     >
       {/* Before Image (Static, always visible) */}
       <div className="absolute inset-0">
-        <Image src={afterImage} alt={afterAlt} fill className="object-cover" loading="lazy" sizes="(max-width: 768px) 50vw, 25vw" />
+        <Image
+          src={afterImage}
+          alt={afterAlt}
+          fill
+          className="object-cover"
+          loading="lazy"
+          sizes="(max-width: 768px) 50vw, 25vw"
+        />
         <div
           className={`${
             ishover ? "opacity-100" : "opacity-0"
@@ -633,7 +670,7 @@ function BeforeAfterSlider({ beforeImage, afterImage, beforeAlt, afterAlt }) {
           After
         </div>
       </div>
- 
+
       {/* After Image (Masked, always 100% size, only part revealed) */}
       <div
         className="absolute inset-0 overflow-hidden"
@@ -657,19 +694,19 @@ function BeforeAfterSlider({ beforeImage, afterImage, beforeAlt, afterAlt }) {
           </div>
         </div>
       </div>
-     
+
       {/* Slider Control */}
       <div
         ref={sliderRef}
-        className="absolute top-0 bottom-0 w-[3px] bg-white cursor-ew-resize z-10"
-        style={{ left: `${sliderPosition}%`, marginLeft: "-2px" }}
+        className="absolute top-0 bottom-0 w-[3px] bg-white cursor-ew-resize z-10 touch-none"
+        style={{ left: `${sliderPosition}%`, transform: "translateX(-50%)" }}
         onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart}
       >
         <div
           onMouseEnter={() => setIshover(false)}
           onMouseLeave={() => setIshover(true)}
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-transparent border-[3px] border-white shadow-md flex items-center justify-center"
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-transparent border-[3px] border-white shadow-md flex items-center justify-center cursor-ew-resize"
         >
           <div className="flex items-center gap-2">
             <Image
