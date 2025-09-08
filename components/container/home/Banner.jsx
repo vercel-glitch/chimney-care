@@ -157,69 +157,65 @@ export default function Banner({
 
   return (
     <FullContainer className="relative bg-white overflow-hidden w-full md:!h-[790px] lg:!h-auto">
-    <div className="absolute inset-0 w-full h-[600px] md:min-h-[790px] overflow-hidden">
-    
-      <Image
-        src={image}
-        title={data?.imageTitle || data?.title || "Banner"}
-        alt={data?.altImage || data?.tagline || "No Banner Found"}
-        priority={true}
-        fill
-        sizes="100vw"
-        className="w-full object-cover object-center"
-      />
-      <div className="absolute inset-0 bg-gradient-to-b  from-black/60 via-black/40 to-black/70"></div>
-    </div>
+      <div className="absolute inset-0 w-full h-[600px] md:min-h-[790px] overflow-hidden">
+        <Image
+          src={image}
+          title={data?.imageTitle || data?.title || "Banner"}
+          alt={data?.altImage || data?.tagline || "No Banner Found"}
+          priority={true}
+          fill
+          sizes="100vw"
+          className="w-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b  from-black/60 via-black/40 to-black/70"></div>
+      </div>
 
-    <Container className="py-20 font-barlow relative z-10 mt-10 md:mt-0">
-      <div className="w-full grid grid-cols-1 lg:grid-cols-banner gap-16 md:gap-[66px] text-white">
-        <div className="relative -mt-10 flex items-center md:items-start flex-col justify-center">
-          <p className="text-center md:text-start lg:text-left font-semibold mt-3 text-[#90D4E1]">
-            # Your Top-rated Chimney Sweep and Chimney Repair Company
-          </p>
-          <h1 className="font-[900] uppercase text-4xl lg:text-[54px] mt-3 px-4 md:px-0 md:text-6xl leading-tight text-center md:text-start lg:text-left  text-shadow-lg">
-            {data?.title}
-          </h1>
-          <h2 className="text-[28px] md:px-0 md:text-6xl uppercase font-[900] leading-tight text-[#90D4E1] text-center md:text-start lg:text-left mt-2">
-            {data?.tagline}
-          </h2>
-          <p className="text-[16px] md:text-3xl text-center md:text-start lg:text-left mt-4 mb-1">
-            {data?.description}
-          </p>
+      <Container className="py-20 font-barlow relative z-10 mt-10 md:mt-0">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-banner gap-16 md:gap-[66px] text-white">
+          <div className="relative -mt-10 flex items-center md:items-start flex-col justify-center">
+            <h1 className="font-[900] uppercase text-4xl lg:text-[54px] mt-3 px-4 md:px-0 md:text-6xl leading-tight text-center md:text-start lg:text-left  text-shadow-lg">
+              {data?.title}
+            </h1>
+            <h2 className="text-[28px] md:px-0 md:text-6xl uppercase font-[900] leading-tight text-[#90D4E1] text-center md:text-start lg:text-left mt-2">
+              {data?.tagline}
+            </h2>
+            <p className="text-[16px] md:text-3xl text-center md:text-start lg:text-left mt-4 mb-1">
+              {data?.description}
+            </p>
 
-          <ul className="mb-6 space-y-1 md:space-y-2">
-            {features?.map((feature, idx) => {
-              const IconComponent = iconMap[feature.icon];
-              return (
-                <li
-                  key={idx}
-                  className="flex items-center gap-3 text-white font-medium text-base md:text-[17px]"
-                >
-                  {IconComponent && (
-                    <IconComponent className="w-5 h-5 text-white" />
-                  )}
-                  {feature.text}
-                </li>
-              );
-            })}
-          </ul>
-          <div className="">
-            <button className="flex items-center gap-3 bg-gradient-to-br from-blue-800 via-sky-500 from-20% to-green-400 text-white px-6 py-3 rounded-full text-3xl font-semibold">
-              <Phone className="w-6 h-6" />
-              {phone}
-            </button>
+            <ul className="mb-6 space-y-1 md:space-y-2">
+              {features?.map((feature, idx) => {
+                const IconComponent = iconMap[feature.icon];
+                return (
+                  <li
+                    key={idx}
+                    className="flex items-center gap-3 text-white font-medium text-base md:text-[17px]"
+                  >
+                    {IconComponent && (
+                      <IconComponent className="w-5 h-5 text-white" />
+                    )}
+                    {feature.text}
+                  </li>
+                );
+              })}
+            </ul>
+            <div className="">
+              <button className="flex items-center gap-3 bg-gradient-to-br from-blue-800 via-sky-500 from-20% to-green-400 text-white px-6 py-3 rounded-full text-3xl font-semibold">
+                <Phone className="w-6 h-6" />
+                {phone}
+              </button>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-center">
+            <QuoteForm
+              data={data}
+              form_head={form_head}
+              showArrowInButton={false}
+            />
           </div>
         </div>
-
-        <div className="flex items-center justify-center">
-          <QuoteForm
-            data={data}
-            form_head={form_head}
-            showArrowInButton={false}
-          />
-        </div>
-      </div>
-    </Container>
-  </FullContainer>
+      </Container>
+    </FullContainer>
   );
 }
