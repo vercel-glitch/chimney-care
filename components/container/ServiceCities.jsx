@@ -8,10 +8,10 @@ import Heading from "../common/Heading";
 
 export default function ServiceCities({ data }) {
   const cities = data?.list || [];
-  
-  // Limit cities to reduce DOM size and memoize the result
+
+  // Memoize the cities list for performance
   const displayCities = useMemo(() => {
-    return cities.slice(0, 15); // Show only first 15 cities to reduce DOM size
+    return cities; // Show all cities
   }, [cities]);
 
   return (
@@ -29,7 +29,7 @@ export default function ServiceCities({ data }) {
           />
           <div className="absolute inset-0 bg-white/40"></div>
         </div>
-        
+
         {/* Header Section */}
         <div className="relative">
           <Heading text="Service Cities" className="pb-6 pt-12" />
@@ -45,14 +45,6 @@ export default function ServiceCities({ data }) {
               </div>
             ))}
           </div>
-          
-          {cities.length > 15 && (
-            <div className="mt-4 text-center">
-              <p className="text-primary text-sm">
-                And {cities.length - 15} more cities in our service area
-              </p>
-            </div>
-          )}
         </div>
       </Container>
     </FullContainer>
