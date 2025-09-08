@@ -57,11 +57,8 @@ export default function PrivacyPolicy({
     <main>
       <Head>
         <meta charSet="UTF-8" />
-        <title>{meta?.title?.replaceAll("##city_name##", city_name)}</title>
-        <meta
-          name="description"
-          content={meta?.description?.replaceAll("##city_name##", city_name)}
-        />
+        <title>{meta?.title}</title>
+        <meta name="description" content={meta?.description} />
         <link rel="author" href={`https://${domain}`} />
         <link rel="publisher" href={`https://${domain}`} />
         <link rel="canonical" href={`https://${domain}/privacy-policy`} />
@@ -119,10 +116,10 @@ export default function PrivacyPolicy({
 
 export async function getServerSideProps({ req }) {
   const domain = getDomain(req?.headers?.host);
-  
+
   // Ultra-fast: Fetch ALL data in a single API call
   const bulkData = await callBackendApiAll({ domain });
-  
+
   // Extract individual tags from the bulk response
   const logo = extractTagData(bulkData, "logo");
   const services = extractTagData(bulkData, "services");

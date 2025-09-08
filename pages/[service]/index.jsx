@@ -23,32 +23,50 @@ import CallButton from "@/components/CallButton";
 
 // Dynamic imports for components below the fold with loading optimization
 const FAQs = dynamic(() => import("../../components/container/FAQs"), {
-  loading: () => <div className="h-96 bg-gray-50 animate-pulse" />
+  loading: () => <div className="h-96 bg-gray-50 animate-pulse" />,
 });
 const Contact = dynamic(() => import("../../components/container/Contact"), {
-  loading: () => <div className="h-96 bg-gray-50 animate-pulse" />
+  loading: () => <div className="h-96 bg-gray-50 animate-pulse" />,
 });
-const ServiceCities = dynamic(() => import("../../components/container/ServiceCities"), {
-  loading: () => <div className="h-64 bg-gray-50 animate-pulse" />
-});
+const ServiceCities = dynamic(
+  () => import("../../components/container/ServiceCities"),
+  {
+    loading: () => <div className="h-64 bg-gray-50 animate-pulse" />,
+  }
+);
 const Footer = dynamic(() => import("../../components/container/Footer"), {
-  loading: () => <div className="h-64 bg-gray-50 animate-pulse" />
+  loading: () => <div className="h-64 bg-gray-50 animate-pulse" />,
 });
-const Gallery = dynamic(() => import("../../components/container/home/Gallery"), {
-  loading: () => <div className="h-96 bg-gray-50 animate-pulse" />
-});
-const ServiceDescription = dynamic(() => import("../../components/container/services/ServiceDescription"), {
-  loading: () => <div className="h-64 bg-gray-50 animate-pulse" />
-});
-const ServiceDescription1 = dynamic(() => import("../../components/container/services/ServicwDescription1"), {
-  loading: () => <div className="h-64 bg-gray-50 animate-pulse" />
-});
-const ServiceDescription2 = dynamic(() => import("../../components/container/services/ServicwDescription2"), {
-  loading: () => <div className="h-64 bg-gray-50 animate-pulse" />
-});
-const ServiceText = dynamic(() => import("../../components/container/services/ServiceText"), {
-  loading: () => <div className="h-64 bg-gray-50 animate-pulse" />
-});
+const Gallery = dynamic(
+  () => import("../../components/container/home/Gallery"),
+  {
+    loading: () => <div className="h-96 bg-gray-50 animate-pulse" />,
+  }
+);
+const ServiceDescription = dynamic(
+  () => import("../../components/container/services/ServiceDescription"),
+  {
+    loading: () => <div className="h-64 bg-gray-50 animate-pulse" />,
+  }
+);
+const ServiceDescription1 = dynamic(
+  () => import("../../components/container/services/ServicwDescription1"),
+  {
+    loading: () => <div className="h-64 bg-gray-50 animate-pulse" />,
+  }
+);
+const ServiceDescription2 = dynamic(
+  () => import("../../components/container/services/ServicwDescription2"),
+  {
+    loading: () => <div className="h-64 bg-gray-50 animate-pulse" />,
+  }
+);
+const ServiceText = dynamic(
+  () => import("../../components/container/services/ServiceText"),
+  {
+    loading: () => <div className="h-64 bg-gray-50 animate-pulse" />,
+  }
+);
 
 const capitalizeFirstLetterOfEachWord = (string) => {
   return string
@@ -91,27 +109,17 @@ export default function Service({
       <Head>
         <meta charSet="UTF-8" />
         <title>
-          {meta?.title
-            ?.replaceAll(
-              "##service##",
-              capitalizeFirstLetterOfEachWord(service?.replaceAll("-", " "))
-            )
-            ?.replaceAll(
-              "##city_name##",
-              capitalizeFirstLetterOfEachWord(city_name)
-            )}
+          {meta?.title?.replaceAll(
+            "##service##",
+            capitalizeFirstLetterOfEachWord(service?.replaceAll("-", " "))
+          )}
         </title>
         <meta
           name="description"
-          content={meta?.description
-            ?.replaceAll(
-              "##service##",
-              capitalizeFirstLetterOfEachWord(service?.replaceAll("-", " "))
-            )
-            ?.replaceAll(
-              "##city_name##",
-              capitalizeFirstLetterOfEachWord(city_name)
-            )}
+          content={meta?.description?.replaceAll(
+            "##service##",
+            capitalizeFirstLetterOfEachWord(service?.replaceAll("-", " "))
+          )}
         />
         <link rel="author" href={`https://${domain}`} />
         <link rel="publisher" href={`https://${domain}`} />
@@ -233,7 +241,7 @@ export async function getServerSideProps({ req, params }) {
 
   // Ultra-fast: Fetch ALL data in a single API call
   const bulkData = await callBackendApiAll({ domain });
-  
+
   // Extract individual tags from the bulk response
   const faqs = extractTagData(bulkData, "faqs");
   const service_text1 = extractTagData(bulkData, "service_text1");
@@ -286,8 +294,6 @@ export async function getServerSideProps({ req, params }) {
 
   robotsTxt({ domain });
 
-
-
   return {
     props: {
       contact_info: contact_info?.data[0]?.value || null,
@@ -300,9 +306,13 @@ export async function getServerSideProps({ req, params }) {
       domain,
       imagePath,
       logo: logo?.data[0] || null,
-      services: Array.isArray(services?.data[0]?.value) ? services?.data[0]?.value : [],
+      services: Array.isArray(services?.data[0]?.value)
+        ? services?.data[0]?.value
+        : [],
       features: features?.data[0] || null,
-      gallery: Array.isArray(gallery?.data[0]?.value) ? gallery?.data[0]?.value : [],
+      gallery: Array.isArray(gallery?.data[0]?.value)
+        ? gallery?.data[0]?.value
+        : [],
       meta: meta?.data[0]?.value || null,
       favicon: favicon?.data[0]?.file_name || null,
       footer: footer?.data[0] || null,
@@ -312,15 +322,16 @@ export async function getServerSideProps({ req, params }) {
       service_description2: service_description2?.data[0] || null,
       city_name: city_name?.data[0]?.value || null,
       form_head: form_head?.data[0]?.value || null,
-      phone: project?.phone ||
-             phone_data?.data?.[0]?.value ||
-             contact_info?.data[0]?.value?.phone || 
-             contact_info?.data[0]?.value?.phone_number || 
-             contact_info?.data[0]?.value?.contact_number ||
-             contact_info?.data[0]?.value?.mobile ||
-             contact_info?.data[0]?.value?.telephone ||
-             contact_info?.data[0]?.value?.tel ||
-             null,
+      phone:
+        project?.phone ||
+        phone_data?.data?.[0]?.value ||
+        contact_info?.data[0]?.value?.phone ||
+        contact_info?.data[0]?.value?.phone_number ||
+        contact_info?.data[0]?.value?.contact_number ||
+        contact_info?.data[0]?.value?.mobile ||
+        contact_info?.data[0]?.value?.telephone ||
+        contact_info?.data[0]?.value?.tel ||
+        null,
     },
   };
 }
