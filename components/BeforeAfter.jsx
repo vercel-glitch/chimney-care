@@ -492,6 +492,33 @@ export default function BeforeAfter({ project_id, niche }) {
       after_alt: "after",
     },
   ];
+  const homeRemodeling = [
+    {
+      before: "/st-images/beforeafter/homeRemodeling/before1.webp",
+      before_alt: "before",
+      after: "/st-images/beforeafter/homeRemodeling/after1.webp",
+      after_alt: "after",
+    },
+    {
+      before: "/st-images/beforeafter/homeRemodeling/before2.webp",
+      before_alt: "before",
+      after: "/st-images/beforeafter/homeRemodeling/after2.webp",
+      after_alt: "after",
+    },
+
+    {
+      before: "/st-images/beforeafter/homeRemodeling/before3.webp",
+      before_alt: "before",
+      after: "/st-images/beforeafter/homeRemodeling/after3.webp",
+      after_alt: "after",
+    },
+    {
+      before: "/st-images/beforeafter/homeRemodeling/before4.webp",
+      before_alt: "before",
+      after: "/st-images/beforeafter/homeRemodeling/after4.webp",
+      after_alt: "after",
+    },
+  ];
 
   // Memoize the selected images to prevent unnecessary re-computations
   const selectedImage = useMemo(() => {
@@ -514,6 +541,7 @@ export default function BeforeAfter({ project_id, niche }) {
       "Mold Removal": moldRemoval,
       Painting: painting,
       Moving: Moving,
+      "Home Remodeling": homeRemodeling,
     };
     return imageMap[niche] || carpet;
   }, [niche]);
@@ -607,7 +635,7 @@ function BeforeAfterSlider({ beforeImage, afterImage, beforeAlt, afterAlt }) {
       });
       document.addEventListener("mouseup", handleMouseUp, { passive: true });
     },
-    [updateContainerRect, handleMouseMove, handleMouseUp]
+    [handleMouseMove, handleMouseUp, updateContainerRect]
   );
 
   const handleTouchStart = useCallback(
@@ -619,31 +647,17 @@ function BeforeAfterSlider({ beforeImage, afterImage, beforeAlt, afterAlt }) {
       });
       document.addEventListener("touchend", handleTouchEnd, { passive: true });
     },
-    [updateContainerRect, handleTouchMove, handleTouchEnd]
+    [handleTouchMove, handleTouchEnd, updateContainerRect]
   );
 
   useEffect(() => {
-    const handleResize = () => {
-      updateContainerRect();
-    };
-
-    window.addEventListener("resize", handleResize);
-    updateContainerRect(); // Initial rect calculation
-
     return () => {
-      window.removeEventListener("resize", handleResize);
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
       document.removeEventListener("touchmove", handleTouchMove);
       document.removeEventListener("touchend", handleTouchEnd);
     };
-  }, [
-    updateContainerRect,
-    handleMouseMove,
-    handleMouseUp,
-    handleTouchMove,
-    handleTouchEnd,
-  ]);
+  }, [handleMouseMove, handleMouseUp, handleTouchMove, handleTouchEnd]);
 
   return (
     <div
@@ -698,15 +712,15 @@ function BeforeAfterSlider({ beforeImage, afterImage, beforeAlt, afterAlt }) {
       {/* Slider Control */}
       <div
         ref={sliderRef}
-        className="absolute top-0 bottom-0 w-[3px] bg-white cursor-ew-resize z-10 touch-none"
-        style={{ left: `${sliderPosition}%`, transform: "translateX(-50%)" }}
+        className="absolute top-0 bottom-0 w-[3px] bg-white cursor-ew-resize z-10"
+        style={{ left: `${sliderPosition}%`, marginLeft: "-2px" }}
         onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart}
       >
         <div
           onMouseEnter={() => setIshover(false)}
           onMouseLeave={() => setIshover(true)}
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-transparent border-[3px] border-white shadow-md flex items-center justify-center cursor-ew-resize"
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-transparent border-[3px] border-white shadow-md flex items-center justify-center"
         >
           <div className="flex items-center gap-2">
             <Image
