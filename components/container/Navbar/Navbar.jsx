@@ -169,9 +169,9 @@ export default function Navbar({ logo, imagePath, phone, data }) {
               <div className=" text-xs ">
                 <a
                   href={`tel:${phone}`}
-                  className="flex items-center justify-center sm:justify-start gap-2 px-6 py-3 rounded-full bg-[#1A2956] text-white font-semibold text-lg shadow hover:bg-[#22397a] transition-all"
+                  className="flex items-center justify-center sm:justify-start gap-2 px-5 lg:px-6 py-2.5 lg:py-3 rounded-full bg-[#1A2956] text-white font-semibold text-sm  lg:text-lg shadow hover:bg-[#22397a] transition-all"
                 >
-                  <Phone className="w-5 h-5" />
+                  <Phone className="w-3.5 h-3.5 lg:w-5 lg:h-5" />
                   {phone}
                 </a>
               </div>
