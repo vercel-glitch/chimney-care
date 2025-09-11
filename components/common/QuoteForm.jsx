@@ -309,7 +309,7 @@ export default function QuoteForm({
             <sup className="text-xl lg:text-2xl">$</sup>
           )}
           {data?.price !== "Free Estimate" ? (
-            data?.price || "89"
+            data?.price || "49"
           ) : (
             <span className="flex items-center gap-2 relative">
               Free <br /> Estimate
