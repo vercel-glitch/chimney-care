@@ -88,7 +88,7 @@ export default function Home({
   city_name,
   project,
 }) {
-  const phone = project?.phone || null;
+  const phone = project?.phone || "(000) 000-0000";
   const gtm_id = project?.additional_config?.gtm_id || null;
   const niche = project?.domain_id?.niche_id?.name || null;
 
