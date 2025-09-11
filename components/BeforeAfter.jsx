@@ -358,7 +358,6 @@ export default function BeforeAfter({ project_id, niche }) {
       after_alt: "after",
     },
   ];
-
   const GarageDoorRepair = [
     {
       before: "/st-images/beforeafter/garageDoor/before1.webp",
