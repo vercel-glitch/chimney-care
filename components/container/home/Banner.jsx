@@ -20,14 +20,7 @@ import {
 import CallButton from "@/components/CallButton";
 import QuoteForm from "@/components/common/QuoteForm";
 
-export default function Banner({
-  image,
-  contact_info,
-  data,
-  form_head,
-  features,
-  phone,
-}) {
+export default function Banner({ image, data, form_head, features, phone }) {
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
