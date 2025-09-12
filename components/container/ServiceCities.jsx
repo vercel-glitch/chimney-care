@@ -32,7 +32,7 @@ export default function ServiceCities({ data }) {
 
         {/* Header Section */}
         <div className="relative">
-          <Heading text="Service Cities" className="pb-6 pt-12" />
+          <Heading text="Areas We Serve" className="pb-6 pt-12" />
 
           <div className="grid md:px-2 z-30 grid-cols-3 gap-y-[6px] gap-x-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
             {displayCities?.map((city, index) => (

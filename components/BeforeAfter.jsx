@@ -545,6 +545,9 @@ export default function BeforeAfter({ project_id, niche }) {
     return imageMap[niche] || carpet;
   }, [niche]);
 
+  console.log("Project Niche", niche);
+  console.log("Selected Image", selectedImage);
+
   return (
     <FullContainer>
       <Container className="pb-16 pt-6 ">
