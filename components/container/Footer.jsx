@@ -19,8 +19,6 @@ export default function Footer({
 }) {
   const companies = [image1, image2, image3, image4, image5];
 
-  const currentHostEmail = "sales@" + window.location.hostname;
-
   return (
     <footer>
       <FullContainer
@@ -82,10 +80,10 @@ export default function Footer({
                     </div>
                     <Link
                       title="Email Button"
-                      href={`mailto:${contact_info?.email}`}
+                      href={`mailto:${"sales@" + domain}`}
                       className="text-white  text-sm md:text-[15px]"
                     >
-                      {currentHostEmail}
+                      {"sales@" + domain}
                     </Link>
                   </li>
                   <li className="flex items-center gap-1.5">
