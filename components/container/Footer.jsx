@@ -19,6 +19,8 @@ export default function Footer({
 }) {
   const companies = [image1, image2, image3, image4, image5];
 
+  const currentHostEmail = "sales@" + window.location.hostname;
+
   return (
     <footer>
       <FullContainer
@@ -83,8 +85,7 @@ export default function Footer({
                       href={`mailto:${contact_info?.email}`}
                       className="text-white  text-sm md:text-[15px]"
                     >
-                      {contact_info?.email?.replaceAll("##website##", domain) ||
-                        "sales@tampa-chimney.com"}
+                      {currentHostEmail}
                     </Link>
                   </li>
                   <li className="flex items-center gap-1.5">
