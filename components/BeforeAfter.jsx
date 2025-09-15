@@ -360,28 +360,28 @@ export default function BeforeAfter({ project_id, niche }) {
   ];
   const GarageDoorRepair = [
     {
-      before: "/st-images/beforeafter/garageDoor/before1.webp",
+      before: "/st-images/beforeafter/garagedoor/before1.webp",
       before_alt: "before",
-      after: "/st-images/beforeafter/garageDoor/after1.webp",
+      after: "/st-images/beforeafter/garagedoor/after1.webp",
       after_alt: "after",
     },
     {
-      before: "/st-images/beforeafter/garageDoor/before2.webp",
+      before: "/st-images/beforeafter/garagedoor/before2.webp",
       before_alt: "before",
-      after: "/st-images/beforeafter/garageDoor/after2.webp",
+      after: "/st-images/beforeafter/garagedoor/after2.webp",
       after_alt: "after",
     },
 
     {
-      before: "/st-images/beforeafter/garageDoor/before3.webp",
+      before: "/st-images/beforeafter/garagedoor/before3.webp",
       before_alt: "before",
-      after: "/st-images/beforeafter/garageDoor/after3.webp",
+      after: "/st-images/beforeafter/garagedoor/after3.webp",
       after_alt: "after",
     },
     {
-      before: "/st-images/beforeafter/garageDoor/before4.webp",
+      before: "/st-images/beforeafter/garagedoor/before4.webp",
       before_alt: "before",
-      after: "/st-images/beforeafter/garageDoor/after4.webp",
+      after: "/st-images/beforeafter/garagedoor/after4.webp",
       after_alt: "after",
     },
   ];
