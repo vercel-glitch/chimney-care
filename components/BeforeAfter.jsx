@@ -308,27 +308,27 @@ export default function BeforeAfter({ project_id, niche }) {
   ];
   const Landscaping = [
     {
-      before: "/st-images/beforeafter/landscaping/before1.webp",
+      before: "/st-images/beforeafter/Landscaping/before1.webp",
       before_alt: "before",
-      after: "/st-images/beforeafter/landscaping/after1.webp",
+      after: "/st-images/beforeafter/Landscaping/after1.webp",
       after_alt: "after",
     },
     {
-      before: "/st-images/beforeafter/landscaping/before2.webp",
+      before: "/st-images/beforeafter/Landscaping/before2.webp",
       before_alt: "before",
-      after: "/st-images/beforeafter/landscaping/after2.webp",
+      after: "/st-images/beforeafter/Landscaping/after2.webp",
       after_alt: "after",
     },
     {
-      before: "/st-images/beforeafter/landscaping/before3.webp",
+      before: "/st-images/beforeafter/Landscaping/before3.webp",
       before_alt: "before",
-      after: "/st-images/beforeafter/landscaping/after3.webp",
+      after: "/st-images/beforeafter/Landscaping/after3.webp",
       after_alt: "after",
     },
     {
-      before: "/st-images/beforeafter/landscaping/before4.webp",
+      before: "/st-images/beforeafter/Landscaping/before4.webp",
       before_alt: "before",
-      after: "/st-images/beforeafter/landscaping/after4.webp",
+      after: "/st-images/beforeafter/Landscaping/after4.webp",
       after_alt: "after",
     },
   ];
@@ -387,27 +387,27 @@ export default function BeforeAfter({ project_id, niche }) {
   ];
   const fireDamage = [
     {
-      before: "/st-images/beforeafter/fireDamage/before1.jpg",
+      before: "/st-images/beforeafter/firedamage/before1.jpg",
       before_alt: "before",
-      after: "/st-images/beforeafter/fireDamage/after1.jpg",
+      after: "/st-images/beforeafter/firedamage/after1.jpg",
       after_alt: "after",
     },
     {
-      before: "/st-images/beforeafter/fireDamage/before2.jpg",
+      before: "/st-images/beforeafter/firedamage/before2.jpg",
       before_alt: "before",
-      after: "/st-images/beforeafter/fireDamage/after2.jpg",
+      after: "/st-images/beforeafter/firedamage/after2.jpg",
       after_alt: "after",
     },
     {
-      before: "/st-images/beforeafter/fireDamage/before3.jpg",
+      before: "/st-images/beforeafter/firedamage/before3.jpg",
       before_alt: "before",
-      after: "/st-images/beforeafter/fireDamage/after3.jpg",
+      after: "/st-images/beforeafter/firedamage/after3.jpg",
       after_alt: "after",
     },
     {
-      before: "/st-images/beforeafter/fireDamage/before4.webp",
+      before: "/st-images/beforeafter/firedamage/before4.webp",
       before_alt: "before",
-      after: "/st-images/beforeafter/fireDamage/after4.webp",
+      after: "/st-images/beforeafter/firedamage/after4.webp",
       after_alt: "after",
     },
   ];
@@ -536,6 +536,9 @@ export default function BeforeAfter({ project_id, niche }) {
       Landscaping: Landscaping,
       Bathroom: Bathroom,
       "Garage Door Repair": GarageDoorRepair,
+      "Garage Door": GarageDoorRepair, // Alternative mapping
+      "garage door repair": GarageDoorRepair, // Lowercase variant
+      "garage door": GarageDoorRepair, // Lowercase variant
       "Fire Damage": fireDamage,
       "Mold Removal": moldRemoval,
       Painting: painting,
