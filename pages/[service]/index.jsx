@@ -320,16 +320,7 @@ export async function getServerSideProps({ req, params }) {
       service_description2: service_description2?.data[0] || null,
       city_name: city_name?.data[0]?.value || null,
       form_head: form_head?.data[0]?.value || null,
-      phone:
-        project?.phone ||
-        phone_data?.data?.[0]?.value ||
-        contact_info?.data[0]?.value?.phone ||
-        contact_info?.data[0]?.value?.phone_number ||
-        contact_info?.data[0]?.value?.contact_number ||
-        contact_info?.data[0]?.value?.mobile ||
-        contact_info?.data[0]?.value?.telephone ||
-        contact_info?.data[0]?.value?.tel ||
-        null,
+      phone: project?.phone || "(000) 000-0000",
     },
   };
 }

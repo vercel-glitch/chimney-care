@@ -7,7 +7,6 @@ import MarkdownIt from "markdown-it";
 import Head from "next/head";
 
 import {
-  callBackendApi,
   callBackendApiAll,
   extractTagData,
   getDomain,
@@ -30,8 +29,9 @@ export default function PrivacyPolicy({
   policy,
   contact_info,
   city_name,
-  phone,
+  project,
 }) {
+  const phone = project?.phone || "(000) 000-0000";
   const markdownIt = new MarkdownIt();
   const content = markdownIt.render(
     policy
@@ -172,7 +172,7 @@ export async function getServerSideProps({ req }) {
       policy: policy?.data[0]?.value || null,
       contact_info: contact_info?.data[0]?.value || null,
       city_name: city_name?.data[0]?.value || null,
-      phone: project?.phone || null,
+      project: project || null,
     },
   };
 }
