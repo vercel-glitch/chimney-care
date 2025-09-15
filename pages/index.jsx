@@ -323,7 +323,6 @@ export async function getServerSideProps({ req }) {
 
     // ⚡ PARALLEL: Process data extraction while waiting for project info
     const [
-      // Extract individual tags from the bulk response
       faqs,
       contact_info,
       banner,

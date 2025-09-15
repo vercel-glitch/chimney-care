@@ -542,7 +542,7 @@ export default function BeforeAfter({ project_id, niche }) {
       Moving: Moving,
       "Home Remodeling": homeRemodeling,
     };
-    return imageMap[niche] || carpet;
+    return imageMap[niche] || chimeny;
   }, [niche]);
 
   console.log("Project Niche", niche);

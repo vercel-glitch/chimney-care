@@ -1,10 +1,9 @@
 import dynamic from "next/dynamic";
 import Navbar from "../../components/container/Navbar/Navbar";
 import Breadcrumbs from "@/components/common/Breadcrumbs";
-import ServiceBanner from "@/components/container/ServiceBanner";
+import Banner from "@/components/container/home/Banner";
 
 import {
-  callBackendApi,
   callBackendApiAll,
   extractTagData,
   getDomain,
@@ -17,8 +16,6 @@ import Head from "next/head";
 import useBreadcrumbs from "@/lib/useBreadcrumbs";
 import FullContainer from "@/components/common/FullContainer";
 import Container from "@/components/common/Container";
-import Link from "next/link";
-import { Phone } from "lucide-react";
 import CallButton from "@/components/CallButton";
 
 // Dynamic imports for components below the fold with loading optimization
@@ -153,13 +150,14 @@ export default function Service({
 
       <Navbar logo={logo} imagePath={imagePath} phone={phone} data={services} />
 
-      <ServiceBanner
+      <Banner
         data={service_banner?.value}
         image={`${imagePath}/${service_banner?.file_name}`}
         imagePath={imagePath}
         phone={phone}
         form_head={form_head}
         features={features?.value}
+        variant="service"
       />
       <FullContainer>
         <Container>
