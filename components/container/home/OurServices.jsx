@@ -24,9 +24,13 @@ export default function OurServices({ phone, data, imagePath }) {
               key={service.id}
               className="bg-white border border-blue-900 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-200 flex flex-col"
             >
-              <div className="w-full h-28 md:h-56 bg-gray-100 flex items-center justify-center overflow-hidden relative">
+              <div className="w-full h-48 md:h-80 bg-gray-100 flex items-center justify-center overflow-hidden relative">
                 <Image
-                  src={service.image ? `${imagePath}/${service.image}` : `${imagePath}/${PLACEHOLDER}`}
+                  src={
+                    service.image
+                      ? `${imagePath}/${service.image}`
+                      : `${imagePath}/${PLACEHOLDER}`
+                  }
                   alt={service.title || "Service"}
                   fill
                   sizes="(max-width: 768px) 50vw, 25vw"
@@ -53,11 +57,17 @@ export default function OurServices({ phone, data, imagePath }) {
             </div>
           ))}
         </div>
-        
+
         {data && data.length > 8 && (
           <div className="mt-6 text-center">
             <p className="text-[#002B5B] text-lg font-semibold">
-              {data.length - 8} more services available - <a href={`tel:${phone}`} className="underline hover:text-blue-700">Call for details</a>
+              {data.length - 8} more services available -{" "}
+              <a
+                href={`tel:${phone}`}
+                className="underline hover:text-blue-700"
+              >
+                Call for details
+              </a>
             </p>
           </div>
         )}
