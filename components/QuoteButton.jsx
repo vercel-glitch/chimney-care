@@ -33,11 +33,13 @@ export default function QuoteButton({ phone }) {
   return (
     <button
       onClick={scrollToQuoteForm}
-      className="w-auto inline-flex min-w-[160px] bg-[#6B9FE4] rounded-full text-md md:text-2xl font-barlow py-1 md:py-3 px-3 md:px-6 font-bold text-black transition-colors hover:bg-[#6B9FE4]/80"
+      className=" inline-flex min-w-[160px] bg-[#6B9FE4] rounded-full md:text-base font-barlow py-3 p-6  w-[205px] font-bold text-black transition-colors hover:bg-[#6B9FE4]/80"
     >
       <div className="flex items-center gap-2">
         <TextQuote className="w-6 h-6" />
-        <h2 className="text-md font-thin md:text-xl">GET A QUOTE</h2>
+        <h2 className="text-md font-thin md:text-xl tracking-widest md:tracking-normal ml-2">
+          GET A QUOTE
+        </h2>
       </div>
     </button>
   );
