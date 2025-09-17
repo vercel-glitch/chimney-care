@@ -15,6 +15,8 @@ import {
 } from "lucide-react";
 import FullContainer from "@/components/common/FullContainer";
 import Link from "next/link";
+import PrimaryPhone from "../../common/PrimaryPhone";
+import QuoteButton from "../../QuoteButton";
 
 export default function WhyChoose({ image, phone, data }) {
   const iconMap = {
@@ -56,20 +58,8 @@ export default function WhyChoose({ image, phone, data }) {
               })}
             </ul>
             <div className="flex flex-col sm:flex-row gap-4 w-full mt-2">
-              <a
-                href={`tel:${phone}`}
-                className="flex items-center justify-center sm:justify-start gap-2 px-6 py-3 rounded-full bg-[#1A2956] text-white font-semibold text-lg shadow hover:bg-[#22397a] transition-all"
-              >
-                <Phone className="w-5 h-5" />
-                {phone}
-              </a>
-              <Link
-                href="#contact-us"
-                className="flex items-center justify-center sm:justify-start gap-2 px-6 py-3 rounded-full bg-[#6B9AED] text-[#1A2956] font-semibold text-lg shadow hover:bg-[#4d7edc] transition-all"
-              >
-                <FileText className="w-5 h-5" />
-                GET A QUOTE
-              </Link>
+              <PrimaryPhone phone={phone} />
+              <QuoteButton phone={phone} />
             </div>
           </div>
           {/* Right: Image */}

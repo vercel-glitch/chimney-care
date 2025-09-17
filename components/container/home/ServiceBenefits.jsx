@@ -1,11 +1,13 @@
 import React from "react";
 import Image from "next/image";
 import Container from "../../common/Container";
-import { ChevronRight, FileText } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import FullContainer from "@/components/common/FullContainer";
-import CallButton from "@/components/CallButton";
+// import CallButton from "@/components/CallButton";
 import Heading from "@/components/common/Heading";
-import Link from "next/link";
+// import Link from "next/link";
+import PrimaryPhone from "../../common/PrimaryPhone";
+import QuoteButton from "../../QuoteButton";
 
 export default function Benefits({ phone, data, image }) {
   const benefits = data?.list || [];
@@ -45,14 +47,8 @@ export default function Benefits({ phone, data, image }) {
               </div>
             </div>
             <div className="w-full gap-2 justify-start hidden md:flex  flex-col lg:flex-row items-start lg:items-center lg:gap-4">
-              <CallButton phone={phone} />
-              <Link
-                href="#contact-us"
-                className="flex items-center justify-center sm:justify-start gap-2 px-6 py-3 rounded-full bg-[#6B9AED] text-[#1A2956] font-semibold text-lg shadow hover:bg-[#4d7edc] transition-all"
-              >
-                <FileText className="w-5 h-5" />
-                GET A QUOTE
-              </Link>
+              <PrimaryPhone phone={phone} />
+              <QuoteButton phone={phone} />
             </div>
           </div>
         </div>

@@ -4,23 +4,27 @@ import { TextQuote } from "lucide-react";
 
 export default function QuoteButton({ phone }) {
   const scrollToQuoteForm = () => {
-    const quoteFormSection = document.getElementById('quote-form-section');
+    const quoteFormSection = document.getElementById("quote-form-section");
     if (quoteFormSection) {
       const offset = 80; // Account for fixed navbar
-      const elementPosition = quoteFormSection.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({ 
-        top: elementPosition - offset, 
-        behavior: "smooth" 
+      const elementPosition =
+        quoteFormSection.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - offset,
+        behavior: "smooth",
       });
     } else {
       // Fallback: try to find the quote form by class or other identifier
-      const quoteForm = document.querySelector('.quote-form, [id*="quote"], [class*="quote-form"]');
+      const quoteForm = document.querySelector(
+        '.quote-form, [id*="quote"], [class*="quote-form"]'
+      );
       if (quoteForm) {
         const offset = 80;
-        const elementPosition = quoteForm.getBoundingClientRect().top + window.scrollY;
-        window.scrollTo({ 
-          top: elementPosition - offset, 
-          behavior: "smooth" 
+        const elementPosition =
+          quoteForm.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+          top: elementPosition - offset,
+          behavior: "smooth",
         });
       }
     }
@@ -33,7 +37,7 @@ export default function QuoteButton({ phone }) {
     >
       <div className="flex items-center gap-2">
         <TextQuote className="w-6 h-6" />
-        <h2 className="text-md font-thin md:text-2xl">GET A QUOTE</h2>
+        <h2 className="text-md font-thin md:text-xl">GET A QUOTE</h2>
       </div>
     </button>
   );

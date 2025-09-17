@@ -2,7 +2,7 @@ import React from "react";
 import Container from "../../common/Container";
 import FullContainer from "../../common/FullContainer";
 import MarkdownIt from "markdown-it";
-import CallButton from "../../CallButton";
+import PrimaryPhone from "../../common/PrimaryPhone";
 import QuoteButton from "../../QuoteButton";
 
 const capitalizeFirstLetterOfEachWord = (string) => {
@@ -44,7 +44,7 @@ export default function ServiceDescription2({
             />
           </div>
           <div className="flex flex-wrap justify-center text-center items-center gap-4 lg:gap-6 pt-6">
-            <CallButton phone={phone} />
+            <PrimaryPhone phone={phone} />
             <QuoteButton phone={phone} />
           </div>
         </div>

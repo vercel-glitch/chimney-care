@@ -5,6 +5,7 @@ import Image from "next/image";
 import CallButton from "../../CallButton";
 import QuoteButton from "../../QuoteButton";
 import MarkdownIt from "markdown-it";
+import PrimaryPhone from "../../common/PrimaryPhone";
 
 const capitalizeFirstLetterOfEachWord = (string) => {
   return string
@@ -45,7 +46,7 @@ export default function ServiceAbout({
               dangerouslySetInnerHTML={{ __html: content }}
             />
             <div className="hidden md:flex flex-wrap w-full justify-start items-center gap-4 lg:gap-7 pt-5">
-              <CallButton phone={phone} />
+              <PrimaryPhone phone={phone} />
               <QuoteButton phone={phone} />
             </div>
           </div>
