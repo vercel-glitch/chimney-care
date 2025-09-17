@@ -217,7 +217,9 @@ export default function Service({
 
       <FAQs faqs={faqs} city_name={city_name} />
 
-      <ServiceCities data={locations} />
+      {locations && locations?.list?.length > 0 && (
+        <ServiceCities data={locations} />
+      )}
       <Footer
         domain={domain}
         data={footer}
