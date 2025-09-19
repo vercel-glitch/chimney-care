@@ -223,7 +223,7 @@ export default function Home({
           <Testimonials logo={logo} imagePath={imagePath} data={testimonials} />
         )}
 
-        <BeforeAfter project_id={project_id} niche={niche} />
+        <BeforeAfter project_id={project_id} niche={niche} domain={domain} />
 
         <OurServices data={services} phone={phone} imagePath={imagePath} />
 
