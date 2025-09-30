@@ -39,10 +39,10 @@ export default function ServiceAbout({
   return (
     <FullContainer className="py-6 md:py-8">
       <Container className="">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-center   ">
           <div className="py-5">
             <div
-              className="w-full prose text-primary"
+              className="w-full prose text-primary text-start prose-h1:!text-start prose-h2:!text-start prose-h3:!text-start"
               dangerouslySetInnerHTML={{ __html: content }}
             />
             <div className="hidden md:flex flex-wrap w-full justify-start items-center gap-4 lg:gap-7 pt-5">
