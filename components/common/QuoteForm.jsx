@@ -298,7 +298,7 @@ export default function QuoteForm({
 
   return (
     <div className="bg-white shadow-[0_0_10px_rgba(0,0,0,0.4)] relative font-barlow rounded-[15px] h-fit px-4 md:px-7 py-7 mx-9 md:w-[370px]">
-      <div
+      {/* <div
         className={`${
           data?.price !== "Free Estimate"
             ? "text-4xl md:text-5xl h-20 md:h-24 w-20 md:w-24 rounded-full"
@@ -315,7 +315,7 @@ export default function QuoteForm({
             Free <br /> Estimate
           </span>
         )}
-      </div>
+      </div> */}
 
       {!formSubmitted && (
         <>
