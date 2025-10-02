@@ -605,7 +605,7 @@ export default function BeforeAfter({ project_id, niche, domain }) {
       Moving: Moving,
       "Home Remodeling": homeRemodeling,
       Fireplace: fireplace,
-      handyman: handyman,
+      Handyman: handyman,
     };
     return imageMap[niche] || chimeny;
   }, [niche, domain]);
