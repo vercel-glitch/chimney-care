@@ -545,14 +545,41 @@ export default function BeforeAfter({ project_id, niche, domain }) {
       after_alt: "after",
     },
   ];
+  const handyman = [
+    {
+      before: "/st-images/beforeafter/handyman/before1.webp",
+      before_alt: "before",
+      after: "/st-images/beforeafter/handyman/after1.webp",
+      after_alt: "after",
+    },
+    {
+      before: "/st-images/beforeafter/handyman/before2.webp",
+      before_alt: "before",
+      after: "/st-images/beforeafter/handyman/after2.webp",
+      after_alt: "after",
+    },
+
+    {
+      before: "/st-images/beforeafter/handyman/before3.webp",
+      before_alt: "before",
+      after: "/st-images/beforeafter/handyman/after3.webp",
+      after_alt: "after",
+    },
+    {
+      before: "/st-images/beforeafter/handyman/before4.webp",
+      before_alt: "before",
+      after: "/st-images/beforeafter/handyman/after4.webp",
+      after_alt: "after",
+    },
+  ];
 
   // Memoize the selected images to prevent unnecessary re-computations
   const selectedImage = useMemo(() => {
     // First check if domain is fireplace-nearme.com
-    if (domain === 'fireplace-nearme.com') {
+    if (domain === "fireplace-nearme.com") {
       return fireplace;
     }
-    
+
     // Otherwise use niche-based mapping
     const imageMap = {
       "Chimney Cleaning": chimeny,
@@ -578,6 +605,7 @@ export default function BeforeAfter({ project_id, niche, domain }) {
       Moving: Moving,
       "Home Remodeling": homeRemodeling,
       Fireplace: fireplace,
+      handyman: handyman,
     };
     return imageMap[niche] || chimeny;
   }, [niche, domain]);
