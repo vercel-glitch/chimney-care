@@ -606,9 +606,28 @@ export default function BeforeAfter({ project_id, niche, domain }) {
       "Home Remodeling": homeRemodeling,
       Fireplace: fireplace,
       Handyman: handyman,
+      "Project Niche Handyman": handyman,
     };
     const selectedImages = imageMap[niche] || chimeny;
-    console.log("Domain:", domain, "| Niche:", niche, "| Selected:", niche || "default (chimeny)");
+    console.log(
+      "Domain:",
+      domain,
+      "| Niche:",
+      niche,
+      "| Selected:",
+      niche || "default (chimeny)"
+    );
+    console.log(
+      "Niche type:",
+      typeof niche,
+      "| Niche length:",
+      niche?.length,
+      "| Exact match:",
+      imageMap[niche] ? "YES" : "NO"
+    );
+    console.log("Raw niche value:", JSON.stringify(niche));
+    console.log("Available keys:", Object.keys(imageMap));
+    console.log("Selected images:", selectedImages);
     return selectedImages;
   }, [niche, domain]);
 
