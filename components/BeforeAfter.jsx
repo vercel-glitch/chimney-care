@@ -607,11 +607,10 @@ export default function BeforeAfter({ project_id, niche, domain }) {
       Fireplace: fireplace,
       Handyman: handyman,
     };
-    return imageMap[niche] || chimeny;
+    const selectedImages = imageMap[niche] || chimeny;
+    console.log("Domain:", domain, "| Niche:", niche, "| Selected:", niche || "default (chimeny)");
+    return selectedImages;
   }, [niche, domain]);
-
-  console.log("Project Niche", niche);
-  console.log("Selected Image", selectedImage);
 
   return (
     <FullContainer>
