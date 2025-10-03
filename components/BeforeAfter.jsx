@@ -12,6 +12,8 @@ import FullContainer from "./common/FullContainer";
 import arrow from "../public/st-images/arrowhead.jpg";
 
 export default function BeforeAfter({ project_id, niche, domain }) {
+  // console.log("domain", domain);
+  // console.log("niche is _____________", niche);
   const chimeny = [
     {
       before: "/st-images/beforeafter/chimeny/before1.webp",
@@ -545,14 +547,40 @@ export default function BeforeAfter({ project_id, niche, domain }) {
       after_alt: "after",
     },
   ];
+  const Handyman = [
+    {
+      before: "/st-images/beforeafter/handyman/before1.png",
+      before_alt: "before",
+      after: "/st-images/beforeafter/handyman/after1.png",
+      after_alt: "after",
+    },
+    {
+      before: "/st-images/beforeafter/handyman/before2.png",
+      before_alt: "before",
+      after: "/st-images/beforeafter/handyman/after2.png",
+      after_alt: "after",
+    },
+    {
+      before: "/st-images/beforeafter/handyman/before3.png",
+      before_alt: "before",
+      after: "/st-images/beforeafter/handyman/after3.png",
+      after_alt: "after",
+    },
+    {
+      before: "/st-images/beforeafter/handyman/before4.png",
+      before_alt: "before",
+      after: "/st-images/beforeafter/handyman/after4.png",
+      after_alt: "after",
+    },
+  ];
 
   // Memoize the selected images to prevent unnecessary re-computations
   const selectedImage = useMemo(() => {
     // First check if domain is fireplace-nearme.com
-    if (domain === 'fireplace-nearme.com') {
+    if (domain === "fireplace-nearme.com") {
       return fireplace;
     }
-    
+
     // Otherwise use niche-based mapping
     const imageMap = {
       "Chimney Cleaning": chimeny,
@@ -578,6 +606,7 @@ export default function BeforeAfter({ project_id, niche, domain }) {
       Moving: Moving,
       "Home Remodeling": homeRemodeling,
       Fireplace: fireplace,
+      Handyman: Handyman,
     };
     return imageMap[niche] || chimeny;
   }, [niche, domain]);
