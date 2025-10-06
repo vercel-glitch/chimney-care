@@ -572,6 +572,32 @@ export default function BeforeAfter({ project_id, niche, domain }) {
       after_alt: "after",
     },
   ];
+  const towing = [
+    {
+      before: "/st-images/beforeafter/towing/before1.webp",
+      before_alt: "before",
+      after: "/st-images/beforeafter/towing/after1.webp",
+      after_alt: "after",
+    },
+    {
+      before: "/st-images/beforeafter/towing/before2.webp",
+      before_alt: "before",
+      after: "/st-images/beforeafter/towing/after2.webp",
+      after_alt: "after",
+    },
+    {
+      before: "/st-images/beforeafter/towing/before3.webp",
+      before_alt: "before",
+      after: "/st-images/beforeafter/towing/after3.webp",
+      after_alt: "after",
+    },
+    {
+      before: "/st-images/beforeafter/towing/before4.webp",
+      before_alt: "before",
+      after: "/st-images/beforeafter/towing/after4.webp",
+      after_alt: "after",
+    },
+  ];
 
   // Memoize the selected images to prevent unnecessary re-computations
   const selectedImage = useMemo(() => {
@@ -606,28 +632,10 @@ export default function BeforeAfter({ project_id, niche, domain }) {
       "Home Remodeling": homeRemodeling,
       Fireplace: fireplace,
       Handyman: handyman,
-      "Project Niche Handyman": handyman,
+      Towing: towing,
     };
+
     const selectedImages = imageMap[niche] || chimeny;
-    console.log(
-      "Domain:",
-      domain,
-      "| Niche:",
-      niche,
-      "| Selected:",
-      niche || "default (chimeny)"
-    );
-    console.log(
-      "Niche type:",
-      typeof niche,
-      "| Niche length:",
-      niche?.length,
-      "| Exact match:",
-      imageMap[niche] ? "YES" : "NO"
-    );
-    console.log("Raw niche value:", JSON.stringify(niche));
-    console.log("Available keys:", Object.keys(imageMap));
-    console.log("Selected images:", selectedImages);
     return selectedImages;
   }, [niche, domain]);
 
