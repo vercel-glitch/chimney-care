@@ -454,7 +454,7 @@ export default function Contact() {
 
 
   return (
-    <FullContainer id="contact-us" className="pb-4 relative">
+    <FullContainer id="contact-us" className="pb-4 relative mt-9">
       <Container className="relative z-10">
         <div id="quote-form-section">
           <div className="bg-primary gap-0 rounded-[20px] overflow-hidden mb-5 shadow-lg">
