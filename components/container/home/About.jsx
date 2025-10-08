@@ -7,7 +7,7 @@ import PrimaryPhone from "@/components/common/PrimaryPhone";
 export default function About({ image, data, city_name, phone }) {
   return (
     <FullContainer className="pb-12 bg-gray-50" id="about-us">
-      <Container className="max-w-7xl mx-auto -mt-16">
+      <Container className="max-w-7xl mx-auto -mt-7 md:-mt-12">
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden p-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
             {/* Text Content - Left Side */}

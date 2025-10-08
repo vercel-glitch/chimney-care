@@ -320,10 +320,10 @@ export default function QuoteForm({
 
       {!formSubmitted && (
         <>
-          <h3 className="text-3xl md:text-4xl leading-7 md:leading-[30px] px-2.5 font-bold text-center mb-2 text-primary">
+          <h3 className="text-3xl md:text-[35px] leading-7 md:leading-[30px] px-2.5 font-bold text-center mb-2 text-primary">
             {form_head?.title}
           </h3>
-          <h4 className="text-lg pt-3 font-bold text-center mb-6 text-[#11121A]">
+          <h4 className="text-lg pt-2 font-bold text-center mb-4 text-[#11121A]">
             {form_head?.sub_title}
           </h4>
         </>

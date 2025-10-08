@@ -57,14 +57,14 @@ export default function Banner({
           sizes="100vw"
           className="w-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70"></div>
+        <div className="absolute inset-0 bg-black/20"></div>
       </div>
 
-      <Container className="py-20 md:pb-36 font-barlow relative z-10 mt-10 md:mt-0">
-        <div className="w-full grid grid-cols-1 lg:grid-cols-banner gap-16 md:gap-[66px] text-white">
-          <div className="relative -mt-10 flex items-center md:items-start flex-col justify-center">
+      <Container className="py-12 md:pb-24 font-barlow relative z-10">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-banner gap-16 md:gap-[66px] text-white content-center">
+          <div className="relative flex items-center md:items-start flex-col justify-center">
             {/* Title handling for both home and service pages */}
-            <h1 className="font-[900] uppercase text-4xl lg:text-[54px] mt-3 px-4 md:px-0 md:text-6xl leading-tight text-center md:text-start lg:text-left text-shadow-lg">
+            <h1 className="font-[900] uppercase text-4xl lg:text-[54px] px-4 md:px-0 md:text-6xl leading-tight text-center md:text-start lg:text-left text-shadow-lg">
               {isService
                 ? data?.heading?.replaceAll(
                     "##service##",
@@ -119,7 +119,7 @@ export default function Banner({
 
             {/* Phone button - show on both pages */}
             <div className="">
-              <button className="flex items-center gap-3 bg-gradient-to-br from-blue-800 via-sky-500 from-20% to-green-400 text-white px-6 py-3 rounded-full text-3xl font-semibold">
+              <button className="flex items-center gap-3 bg-gradient-to-br from-blue-600 via-sky-500 from-30% to-green-500 text-white px-6 py-3 rounded-2xl text-3xl font-semibold">
                 <Phone className="w-6 h-6" />
                 {phone}
               </button>
