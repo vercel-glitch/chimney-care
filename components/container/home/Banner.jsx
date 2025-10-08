@@ -60,7 +60,7 @@ export default function Banner({
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70"></div>
       </div>
 
-      <Container className="py-20 font-barlow relative z-10 mt-10 md:mt-0">
+      <Container className="py-20 md:pb-36 font-barlow relative z-10 mt-10 md:mt-0">
         <div className="w-full grid grid-cols-1 lg:grid-cols-banner gap-16 md:gap-[66px] text-white">
           <div className="relative -mt-10 flex items-center md:items-start flex-col justify-center">
             {/* Title handling for both home and service pages */}

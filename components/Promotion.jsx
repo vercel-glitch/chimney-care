@@ -141,7 +141,7 @@ const FullMonthPromotion = ({ prices }) => {
   return (
     <FullContainer id="promo">
       <Container>
-        <div className="w-full py-12">
+        <div className="w-full pb-12 pt-8">
           <h2 className="text-4xl font-extrabold text-center text-blue-950 mb-8 tracking-tight">
            Monthly Promotion
           </h2>

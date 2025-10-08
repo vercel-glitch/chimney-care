@@ -218,13 +218,20 @@ export default function Home({
           niche={niche}
         />
 
+        <About
+          services={services?.list}
+          data={about?.value}
+          image={`${imagePath}/${about?.file_name}`}
+          city_name={city_name}
+          phone={phone}
+        />
+
         <FullMonthPromotion why_us={why_us} prices={prices} />
         {testimonials && (
           <Testimonials logo={logo} imagePath={imagePath} data={testimonials} />
         )}
 
         <BeforeAfter project_id={project_id} niche={niche} domain={domain} />
-
         <OurServices data={services} phone={phone} imagePath={imagePath} />
 
         <WhyChoose
@@ -241,9 +248,9 @@ export default function Home({
         /> */}
 
         {/* Slogan 1 */}
-        <FullContainer className="bg-white pt-6 md:pt-10 flex flex-col items-center justify-center">
+        <FullContainer className="bg-white pt-6 md:pt-12 pb-10 flex flex-col items-center justify-center">
           <Container className="text-center flex flex-col items-center justify-center">
-            <h2 className="text-3xl font-extrabold text-[#1A2956] mb-4">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-[#1A2956] mb-4">
               {slogan_1?.title}
             </h2>
             <p className="text-base md:text-lg text-[#1A2956] mb-4">
@@ -251,13 +258,6 @@ export default function Home({
             </p>
           </Container>
         </FullContainer>
-
-        <About
-          services={services?.list}
-          data={about?.value}
-          image={`${imagePath}/${about?.file_name}`}
-          city_name={city_name}
-        />
 
         <ServiceBenefits
           phone={phone}
