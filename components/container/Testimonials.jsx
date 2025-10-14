@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useRef, useMemo, useCallback } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useMemo,
+  useCallback,
+} from "react";
 import Container from "../common/Container";
 import Heading from "../common/Heading";
 import Logo from "@/components/Logo";
@@ -18,10 +24,30 @@ const Testimonials = ({ data, logo, imagePath }) => {
   const autoSlideRef = useRef(null);
   const animationRef = useRef(null);
 
-  // Use memoized avatars to prevent regeneration on every render
+  // Use memoized avatars and dates to prevent regeneration on every render
   const testimonialsWithAvatars = useMemo(() => {
     const getRandomAvatar = (seed) => {
       return `https://api.dicebear.com/7.x/avataaars/svg?seed=${seed}`;
+    };
+
+    // Generate random unique dates from 2023
+    const getRandomDate = (index) => {
+      // Use index as seed for consistent date generation per testimonial
+      const start = new Date("2023-01-01").getTime();
+      const end = new Date("2023-12-31").getTime();
+
+      // Create a pseudo-random but consistent offset based on index
+      const seed = (index * 2654435761) % testimonials.length;
+      const offset = (seed / testimonials.length) * (end - start);
+      const randomTime = start + offset;
+      const date = new Date(randomTime);
+
+      // Format date as YYYY-MM-DD
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const day = String(date.getDate()).padStart(2, "0");
+
+      return `${year}-${month}-${day}`;
     };
 
     return testimonials.map((testimonial, index) => ({
@@ -29,12 +55,13 @@ const Testimonials = ({ data, logo, imagePath }) => {
       avatar:
         testimonial.avatar ||
         getRandomAvatar(testimonial.name || `user-${index}`),
+      date: getRandomDate(index),
     }));
   }, [testimonials]);
 
   // Default avatar using DiceBear (memoized)
-  const defaultAvatar = useMemo(() => 
-    "https://api.dicebear.com/7.x/avataaars/svg?seed=default",
+  const defaultAvatar = useMemo(
+    () => "https://api.dicebear.com/7.x/avataaars/svg?seed=default",
     []
   );
 
@@ -328,7 +355,7 @@ const Testimonials = ({ data, logo, imagePath }) => {
                                 ))}
                               </div>
                               <p className="text-gray-500 text-xs">
-                                {testimonial.date || "2025-03-17"}
+                                {testimonial.date}
                               </p>
                             </div>
                           </div>
