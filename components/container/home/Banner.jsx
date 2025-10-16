@@ -57,7 +57,7 @@ export default function Banner({
           sizes="100vw"
           className="w-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="absolute inset-0 bg-black/30"></div>
       </div>
 
       <Container className="py-12 md:pb-24 font-barlow relative z-10">
