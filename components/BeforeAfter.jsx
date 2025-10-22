@@ -12,6 +12,7 @@ import FullContainer from "./common/FullContainer";
 import arrow from "../public/st-images/arrowhead.jpg";
 
 export default function BeforeAfter({ project_id, niche, domain }) {
+  console.log("niche is 😠😠😠😠😠😠 ", niche);
   const chimeny = [
     {
       before: "/st-images/beforeafter/chimeny/before1.webp",
@@ -598,6 +599,32 @@ export default function BeforeAfter({ project_id, niche, domain }) {
       after_alt: "after",
     },
   ];
+  const Electrics = [
+    {
+      before: "/st-images/beforeafter/electricals/before1.png",
+      before_alt: "before",
+      after: "/st-images/beforeafter/electricals/after1.png",
+      after_alt: "after",
+    },
+    {
+      before: "/st-images/beforeafter/electricals/before2.png",
+      before_alt: "before",
+      after: "/st-images/beforeafter/electricals/after2.png",
+      after_alt: "after",
+    },
+    {
+      before: "/st-images/beforeafter/electricals/before3.png",
+      before_alt: "before",
+      after: "/st-images/beforeafter/electricals/after3.png",
+      after_alt: "after",
+    },
+    {
+      before: "/st-images/beforeafter/electricals/before4.png",
+      before_alt: "before",
+      after: "/st-images/beforeafter/electricals/after4.png",
+      after_alt: "after",
+    },
+  ];
 
   // Memoize the selected images to prevent unnecessary re-computations
   const selectedImage = useMemo(() => {
@@ -612,6 +639,7 @@ export default function BeforeAfter({ project_id, niche, domain }) {
       "Air Conditioning": airduct,
       "Dryervent Cleaning": dryervent,
       "Carpet Cleaning": carpet,
+      Electrics: Electrics,
       Roofing: roofing,
       "Sliding Door": slidingDoor,
       "water damage": waterDamage,
