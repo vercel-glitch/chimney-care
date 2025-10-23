@@ -8,7 +8,14 @@ import Logo from "@/components/Logo";
 import { sanitizeUrl } from "@/lib/myFun";
 import CallButton from "@/components/CallButton";
 
-export default function Navbar({ logo, imagePath, phone, data }) {
+export default function Navbar({
+  logo,
+  imagePath,
+  phone,
+  data,
+  service_visiable,
+}) {
+  console.log("service_visiable is 🫡🫡🫡🫡🫡🫡", service_visiable);
   const [isOpen, setIsOpen] = useState(false);
   const [showServices, setShowServices] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -105,50 +112,54 @@ export default function Navbar({ logo, imagePath, phone, data }) {
             >
               Locations
             </button>
-            <div
-              className="relative h-full"
-              onMouseEnter={() => setShowServices(true)}
-              onMouseLeave={() => setShowServices(false)}
-            >
-              <button
-                className={`flex items-center h-full gap-1 ${
-                  showServices ? "text-[#002B5B]" : "text-black"
-                }`}
+            {service_visiable === true && (
+              <divåß
+                className="relative h-full"
+                onMouseEnter={() => setShowServices(true)}
+                onMouseLeave={() => setShowServices(false)}
               >
-                Services
-                <ChevronDown className="w-4 h-4" />
-              </button>
+                <button
+                  className={`flex items-center h-full gap-1 ${
+                    showServices ? "text-[#002B5B]" : "text-black"
+                  }`}
+                >
+                  Services
+                  <ChevronDown className="w-4 h-4" />
+                </button>
 
-              <div
-                className={`absolute top-full left-0 w-auto min-w-[300px] bg-white shadow-[0_0_10px_rgba(0,0,0,0.5)]
+                <div
+                  className={`absolute top-full left-0 w-auto min-w-[300px] bg-white shadow-[0_0_10px_rgba(0,0,0,0.5)]
                 transition-all duration-300 ease-in-out flex flex-col
                 ${
                   showServices
                     ? "opacity-100 visible transform translate-y-0"
                     : "opacity-0 invisible transform -translate-y-2"
                 }`}
-              >
-                <div className="flex-grow dropdown-services-container scrollbar-hide">
-                  {(Array.isArray(data) ? data : [])?.map((service, index) => {
-                    const serviceUrl = sanitizeUrl(service?.title);
-                    return (
-                      <Link
-                        title={service?.title}
-                        key={index}
-                        href={serviceUrl}
-                        className={`text-xl py-1 font-semibold px-4 cursor-pointer transition-all duration-100 block ${
-                          pathname === `/${serviceUrl}`
-                            ? "bg-[#002B5B] text-white"
-                            : "text-black hover:bg-primary hover:text-white"
-                        }`}
-                      >
-                        {service?.title}
-                      </Link>
-                    );
-                  })}
+                >
+                  <div className="flex-grow dropdown-services-container scrollbar-hide">
+                    {(Array.isArray(data) ? data : [])?.map(
+                      (service, index) => {
+                        const serviceUrl = sanitizeUrl(service?.title);
+                        return (
+                          <Link
+                            title={service?.title}
+                            key={index}
+                            href={serviceUrl}
+                            className={`text-xl py-1 font-semibold px-4 cursor-pointer transition-all duration-100 block ${
+                              pathname === `/${serviceUrl}`
+                                ? "bg-[#002B5B] text-white"
+                                : "text-black hover:bg-primary hover:text-white"
+                            }`}
+                          >
+                            {service?.title}
+                          </Link>
+                        );
+                      }
+                    )}
+                  </div>
                 </div>
-              </div>
-            </div>
+              </divåß>
+            )}
 
             <button
               onClick={() => handleNavigation("faqs")}

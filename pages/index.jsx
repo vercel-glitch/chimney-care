@@ -5,7 +5,6 @@ import Navbar from "../components/container/Navbar/Navbar";
 import Container from "@/components/common/Container";
 import FullContainer from "@/components/common/FullContainer";
 import CallButton from "@/components/CallButton";
-
 import {
   callBackendApiAll,
   extractTagData,
@@ -87,7 +86,9 @@ export default function Home({
   form_head,
   city_name,
   project,
+  service_visiable,
 }) {
+  console.log("service_visiable 💕💕💕💕💕💕 at top", service_visiable);
   const phone = project?.phone || "(000) 000-0000";
   const gtm_id = project?.additional_config?.gtm_id || null;
   const niche = project?.domain_id?.niche_id?.name || null;
@@ -207,6 +208,7 @@ export default function Home({
           imagePath={imagePath}
           phone={phone}
           data={services}
+          service_visiable={service_visiable}
         />
         <Banner
           data={banner?.value}
@@ -232,7 +234,10 @@ export default function Home({
         )}
 
         <BeforeAfter project_id={project_id} niche={niche} domain={domain} />
-        <OurServices data={services} phone={phone} imagePath={imagePath} />
+
+        {service_visiable !== false && (
+          <OurServices data={services} phone={phone} imagePath={imagePath} />
+        )}
 
         <WhyChoose
           data={features?.value}
@@ -345,6 +350,7 @@ export async function getServerSideProps({ req }) {
       city_name,
       phone_data,
       imagePath,
+      service_visiable,
     ] = await Promise.all([
       Promise.resolve(extractTagData(bulkData, "faqs")),
       Promise.resolve(extractTagData(bulkData, "contact_info")),
@@ -365,8 +371,8 @@ export async function getServerSideProps({ req }) {
       Promise.resolve(extractTagData(bulkData, "city_name")),
       Promise.resolve(extractTagData(bulkData, "phone")),
       getImagePath(project_id, domain),
+      Promise.resolve(extractTagData(bulkData, "service_visiable")),
     ]);
-
     robotsTxt({ domain });
 
     // Keep secret variables server-side only
@@ -399,6 +405,7 @@ export async function getServerSideProps({ req }) {
         city_name: city_name?.data[0]?.value || null,
         phone_data: phone_data || null,
         project: project || null,
+        service_visiable: service_visiable?.data[0]?.value || true,
       },
     };
   } catch (error) {
