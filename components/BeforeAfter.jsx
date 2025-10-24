@@ -625,6 +625,31 @@ export default function BeforeAfter({ project_id, niche, domain }) {
       after_alt: "after",
     },
   ];
+  const Deck = [
+    {
+      before: "/st-images/beforeafter/deck/before1.png",
+      before_alt: "before",
+      after: "/st-images/beforeafter/deck/after1.png",
+      after_alt: "after",
+    },
+    {
+      before: "/st-images/beforeafter/deck/before2.png",
+      before_alt: "before",
+      after: "/st-images/beforeafter/deck/after2.png",
+      after_alt: "after",
+    },
+    {
+      before: "/st-images/beforeafter/deck/before3.png",
+      before_alt: "before",
+      after: "/st-images/beforeafter/deck/after3.png",
+      after_alt: "after",
+    },
+    {
+      before: "/st-images/beforeafter/deck/before4.png",
+      before_alt: "before",
+      after: "/st-images/beforeafter/deck/after4.png",
+    },
+  ];
 
   // Memoize the selected images to prevent unnecessary re-computations
   const selectedImage = useMemo(() => {
@@ -661,6 +686,7 @@ export default function BeforeAfter({ project_id, niche, domain }) {
       Fireplace: fireplace,
       Handyman: handyman,
       Towing: towing,
+      Deck: Deck,
     };
 
     const selectedImages = imageMap[niche] || chimeny;
