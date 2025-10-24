@@ -105,50 +105,54 @@ export default function Navbar({ logo, imagePath, phone, data }) {
             >
               Locations
             </button>
-            <div
-              className="relative h-full"
-              onMouseEnter={() => setShowServices(true)}
-              onMouseLeave={() => setShowServices(false)}
-            >
-              <button
-                className={`flex items-center h-full gap-1 ${
-                  showServices ? "text-[#002B5B]" : "text-black"
-                }`}
-              >
-                Services
-                <ChevronDown className="w-4 h-4" />
-              </button>
-
+            {data.length > 0 && (
               <div
-                className={`absolute top-full left-0 w-auto min-w-[300px] bg-white shadow-[0_0_10px_rgba(0,0,0,0.5)]
+                className="relative h-full"
+                onMouseEnter={() => setShowServices(true)}
+                onMouseLeave={() => setShowServices(false)}
+              >
+                <button
+                  className={`flex items-center h-full gap-1 ${
+                    showServices ? "text-[#002B5B]" : "text-black"
+                  }`}
+                >
+                  Services
+                  <ChevronDown className="w-4 h-4" />
+                </button>
+
+                <div
+                  className={`absolute top-full left-0 w-auto min-w-[300px] bg-white shadow-[0_0_10px_rgba(0,0,0,0.5)]
                 transition-all duration-300 ease-in-out flex flex-col
                 ${
                   showServices
                     ? "opacity-100 visible transform translate-y-0"
                     : "opacity-0 invisible transform -translate-y-2"
                 }`}
-              >
-                <div className="flex-grow dropdown-services-container scrollbar-hide">
-                  {(Array.isArray(data) ? data : [])?.map((service, index) => {
-                    const serviceUrl = sanitizeUrl(service?.title);
-                    return (
-                      <Link
-                        title={service?.title}
-                        key={index}
-                        href={serviceUrl}
-                        className={`text-xl py-1 font-semibold px-4 cursor-pointer transition-all duration-100 block ${
-                          pathname === `/${serviceUrl}`
-                            ? "bg-[#002B5B] text-white"
-                            : "text-black hover:bg-primary hover:text-white"
-                        }`}
-                      >
-                        {service?.title}
-                      </Link>
-                    );
-                  })}
+                >
+                  <div className="flex-grow dropdown-services-container scrollbar-hide">
+                    {(Array.isArray(data) ? data : [])?.map(
+                      (service, index) => {
+                        const serviceUrl = sanitizeUrl(service?.title);
+                        return (
+                          <Link
+                            title={service?.title}
+                            key={index}
+                            href={serviceUrl}
+                            className={`text-xl py-1 font-semibold px-4 cursor-pointer transition-all duration-100 block ${
+                              pathname === `/${serviceUrl}`
+                                ? "bg-[#002B5B] text-white"
+                                : "text-black hover:bg-primary hover:text-white"
+                            }`}
+                          >
+                            {service?.title}
+                          </Link>
+                        );
+                      }
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
 
             <button
               onClick={() => handleNavigation("faqs")}
@@ -222,42 +226,44 @@ export default function Navbar({ logo, imagePath, phone, data }) {
             Home
           </Link>
 
-          <div className="">
-            <div
-              className={`px-4 py-1 flex items-center cursor-pointer ${
-                pathname.includes("/services")
-                  ? "bg-primary text-white"
-                  : "text-black bg-transparent"
-              }`}
-              onClick={() => setShowServices(!showServices)}
-            >
-              Services
-              <ChevronDown className="w-4 h-4" />
-            </div>
-
-            {showServices && (
-              <div className=" mt-2 flex flex-col max-h-[300px] overflow-y-auto gap-2">
-                {(Array.isArray(data) ? data : [])?.map((service, index) => {
-                  const serviceUrl = sanitizeUrl(service?.title);
-                  return (
-                    <Link
-                      title={service?.title}
-                      key={index}
-                      href={serviceUrl}
-                      className={`py-1 pl-7 px-4 ${
-                        pathname.includes(serviceUrl)
-                          ? "bg-primary text-white"
-                          : "text-black hover:text-primary"
-                      } text-lg`}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {service?.title}
-                    </Link>
-                  );
-                })}
+          {data.length > 0 && (
+            <div className="">
+              <div
+                className={`px-4 py-1 flex items-center cursor-pointer ${
+                  pathname.includes("/services")
+                    ? "bg-primary text-white"
+                    : "text-black bg-transparent"
+                }`}
+                onClick={() => setShowServices(!showServices)}
+              >
+                Services
+                <ChevronDown className="w-4 h-4" />
               </div>
-            )}
-          </div>
+
+              {showServices && (
+                <div className=" mt-2 flex flex-col max-h-[300px] overflow-y-auto gap-2">
+                  {(Array.isArray(data) ? data : [])?.map((service, index) => {
+                    const serviceUrl = sanitizeUrl(service?.title);
+                    return (
+                      <Link
+                        title={service?.title}
+                        key={index}
+                        href={serviceUrl}
+                        className={`py-1 pl-7 px-4 ${
+                          pathname.includes(serviceUrl)
+                            ? "bg-primary text-white"
+                            : "text-black hover:text-primary"
+                        } text-lg`}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {service?.title}
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          )}
 
           {navLinks.map((item, index) => {
             const linkPath = `/${item.link}`;
