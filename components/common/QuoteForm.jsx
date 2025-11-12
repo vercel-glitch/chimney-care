@@ -297,7 +297,7 @@ export default function QuoteForm({
   };
 
   return (
-    <div className="bg-white shadow-[0_0_10px_rgba(0,0,0,0.4)] relative font-barlow rounded-[15px] h-fit px-4 md:px-7 py-7 mx-9 md:w-[370px]">
+    <div className="bg-white shadow-[0_0_10px_rgba(0,0,0,0.4)] relative font-barlow rounded-[15px] h-fit px-4 md:px-7 py-7  md:w-[370px] ">
       {/* <div
         className={`${
           data?.price !== "Free Estimate"

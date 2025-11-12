@@ -47,7 +47,7 @@ export default function Banner({
 
   return (
     <FullContainer className="relative bg-white overflow-hidden w-full md:!h-[790px] lg:!h-auto">
-      <div className="absolute inset-0 w-full h-[600px] md:min-h-[790px] overflow-hidden">
+      <div className="absolute inset-0 w-full h-[600px] md:min-h-[790px] overflow-hidden ">
         <Image
           src={image}
           title={data?.imageTitle || data?.title || "Banner"}
@@ -61,72 +61,74 @@ export default function Banner({
       </div>
 
       <Container className="py-12 md:pb-24 font-barlow relative z-10">
-        <div className="w-full grid grid-cols-1 lg:grid-cols-banner gap-16 md:gap-[66px] text-white content-center">
-          <div className="relative flex items-center md:items-start flex-col justify-center">
+        <div className="w-full flex flex-col md:flex-row gap-16 md:mx-auto md:w-fit md:gap-[66px] text-white content-center">
+          <div className="relative flex w-full md:w-fit items-center md:items-end flex-col justify-center">
             {/* Title handling for both home and service pages */}
-            <h1 className="font-[900] uppercase text-4xl lg:text-[54px] px-4 md:px-0 md:text-6xl leading-tight text-center md:text-start lg:text-left text-shadow-lg">
-              {isService
-                ? data?.heading?.replaceAll(
-                    "##service##",
-                    service?.replace(/-/g, " ")
-                  )
-                : data?.title}
-            </h1>
-            <h2 className="text-[28px] md:px-0 md:text-2xl uppercase font-[900] leading-tight text-[#90D4E1] text-center md:text-start lg:text-left mt-2">
-              {isService
-                ? data?.tagline?.replaceAll(
-                    "##service##",
-                    service?.replace(/-/g, " ")
-                  )
-                : data?.tagline}
-            </h2>
+            <div className="w-fit flex flex-col items-center md:items-start justify-center">
+              <div className="font-[900]  max-w-[500px] w-fit inline-block uppercase text-4xl lg:text-[54px] px-4 md:px-0 md:text-6xl leading-tight text-center md:text-start lg:text-left text-shadow-lg">
+                {isService
+                  ? data?.heading?.replaceAll(
+                      "##service##",
+                      service?.replace(/-/g, " ")
+                    )
+                  : data?.title}
+              </div>
+              <h2 className=" text-[28px] md:px-0 md:text-2xl uppercase font-[900] leading-tight text-[#90D4E1] text-center md:text-start lg:text-left mt-2">
+                {isService
+                  ? data?.tagline?.replaceAll(
+                      "##service##",
+                      service?.replace(/-/g, " ")
+                    )
+                  : data?.tagline}
+              </h2>
 
-            <p className="text-[16px] md:text-3xl text-center md:text-start lg:text-left mt-4 mb-1">
-              {data?.description}
-            </p>
+              <p className="text-[16px] md:text-3xl text-center md:text-start lg:text-left mt-4 mb-1">
+                {data?.description}
+              </p>
 
-            {/* Features/List rendering with consistent styling */}
-            <ul className="mb-6 space-y-1 md:space-y-2">
-              {isService
-                ? // Service page - simple list with checkmarks
-                  Array.isArray(data?.list) &&
-                  data?.list?.map((item, index) => (
-                    <li
-                      key={index}
-                      className="flex items-center gap-3 text-white font-medium text-base md:text-[17px]"
-                    >
-                      <CheckCircle className="w-5 h-5 text-white" />
-                      {item}
-                    </li>
-                  ))
-                : // Home page - features with icons
-                  Array.isArray(features) &&
-                  features?.map((feature, idx) => {
-                    const IconComponent = iconMap[feature.icon];
-                    return (
+              {/* Features/List rendering with consistent styling */}
+              <ul className="mb-6 w-fit  space-y-1 md:space-y-2">
+                {isService
+                  ? // Service page - simple list with checkmarks
+                    Array.isArray(data?.list) &&
+                    data?.list?.map((item, index) => (
                       <li
-                        key={idx}
+                        key={index}
                         className="flex items-center gap-3 text-white font-medium text-base md:text-[17px]"
                       >
-                        {IconComponent && (
-                          <IconComponent className="w-5 h-5 text-white" />
-                        )}
-                        {feature.text}
+                        <CheckCircle className="w-5 h-5 text-white" />
+                        {item}
                       </li>
-                    );
-                  })}
-            </ul>
+                    ))
+                  : // Home page - features with icons
+                    Array.isArray(features) &&
+                    features?.map((feature, idx) => {
+                      const IconComponent = iconMap[feature.icon];
+                      return (
+                        <li
+                          key={idx}
+                          className="flex items-center gap-3 text-white font-medium text-base md:text-[17px]"
+                        >
+                          {IconComponent && (
+                            <IconComponent className="w-5 h-5 text-white" />
+                          )}
+                          {feature.text}
+                        </li>
+                      );
+                    })}
+              </ul>
 
-            {/* Phone button - show on both pages */}
-            <div className="">
-              <button className="flex items-center gap-3 bg-gradient-to-br from-blue-600 via-sky-500 from-30% to-green-500 text-white px-6 py-3 rounded-2xl text-3xl font-semibold">
-                <Phone className="w-6 h-6" />
-                {phone}
-              </button>
+              {/* Phone button - show on both pages */}
+              <div className=" w-fit">
+                <button className="flex items-center gap-3 bg-gradient-to-br from-blue-600 via-sky-500 from-30% to-green-500 text-white px-6 py-3 rounded-2xl text-3xl font-semibold">
+                  <Phone className="w-6 h-6" />
+                  {phone}
+                </button>
+              </div>
             </div>
           </div>
 
-          <div className="flex items-center justify-center">
+          <div className=" w-full md:w-fit">
             <QuoteForm
               data={data}
               form_head={form_head}
