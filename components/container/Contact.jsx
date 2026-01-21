@@ -162,6 +162,7 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formStarted, setFormStarted] = useState(false);
+  const [gtmEventFired, setGtmEventFired] = useState(false);
 
   // Function to handle first form interaction
   const handleFirstInteraction = () => {
@@ -181,10 +182,17 @@ export default function Contact() {
 
   // Function to fire GTM event
   const fireGTMEvent = (submittedFormData) => {
+    // Prevent duplicate GTM events
+    if (gtmEventFired) {
+      return;
+    }
+
     if (typeof window !== "undefined" && window.dataLayer) {
       try {
         window.dataLayer.push({
           event: "form_submit",
+          form_id: "contact_form",
+          form_name: "Contact Form",
           url: window.location.href,
           formData: {
             name: submittedFormData.name,
@@ -194,6 +202,7 @@ export default function Contact() {
             zipcode: submittedFormData.zipcode,
           },
         });
+        setGtmEventFired(true);
       } catch (error) {
         // GTM form submit event failed
       }
@@ -220,6 +229,7 @@ export default function Contact() {
     fireLeadSubmittedEvent();
 
     setFormSubmitted(false);
+    setGtmEventFired(false); // Reset GTM event flag for next submission
     setFormData({
       name: "",
       email: "",

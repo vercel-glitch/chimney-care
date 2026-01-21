@@ -25,6 +25,7 @@ export default function QuoteForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formStarted, setFormStarted] = useState(false);
+  const [gtmEventFired, setGtmEventFired] = useState(false);
 
   // Function to handle first form interaction
   const handleFirstInteraction = () => {
@@ -111,9 +112,16 @@ export default function QuoteForm({
 
   // Function to fire GTM event
   const fireGTMEvent = (submittedFormData) => {
+    // Prevent duplicate GTM events
+    if (gtmEventFired) {
+      return;
+    }
+
     if (typeof window !== "undefined" && window.dataLayer) {
       window.dataLayer.push({
         event: "form_submit",
+        form_id: "banner_quote_form",
+        form_name: "Banner Quote Form",
         url: window.location.href,
         formData: {
           firstName: submittedFormData.firstName,
@@ -123,6 +131,7 @@ export default function QuoteForm({
           message: submittedFormData.message,
         },
       });
+      setGtmEventFired(true);
     }
   };
 
@@ -142,6 +151,7 @@ export default function QuoteForm({
     fireLeadSubmittedEvent();
 
     setFormSubmitted(false);
+    setGtmEventFired(false); // Reset GTM event flag for next submission
     setFormData({
       firstName: "",
       lastName: "",
