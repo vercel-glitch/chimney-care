@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import { CheckCircle, Loader, FileText, ArrowRight } from "lucide-react";
 import toast from "react-hot-toast";
 
@@ -25,7 +25,10 @@ export default function QuoteForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formStarted, setFormStarted] = useState(false);
-  const [gtmEventFired, setGtmEventFired] = useState(false);
+  
+  // Use useRef instead of useState for more reliable duplicate prevention
+  const gtmEventFired = useRef(false);
+  const submissionInProgress = useRef(false);
 
   // Function to handle first form interaction
   const handleFirstInteraction = () => {
@@ -110,19 +113,26 @@ export default function QuoteForm({
     return Object.keys(newErrors).length === 0;
   };
 
-  // Function to fire GTM event
-  const fireGTMEvent = (submittedFormData) => {
-    // Prevent duplicate GTM events
-    if (gtmEventFired) {
+  // Function to fire GTM event - use useCallback to prevent recreation
+  const fireGTMEvent = useCallback((submittedFormData) => {
+    // Prevent duplicate GTM events using ref
+    if (gtmEventFired.current) {
+      console.warn("⚠️ GTM event already fired, preventing duplicate");
       return;
     }
 
     if (typeof window !== "undefined" && window.dataLayer) {
+      console.log("🚀 Firing GTM form_submit event for banner_quote_form");
+      
+      // Mark as fired BEFORE pushing to prevent race conditions
+      gtmEventFired.current = true;
+      
       window.dataLayer.push({
         event: "form_submit",
         form_id: "banner_quote_form",
         form_name: "Banner Quote Form",
         url: window.location.href,
+        timestamp: new Date().toISOString(),
         formData: {
           firstName: submittedFormData.firstName,
           lastName: submittedFormData.lastName,
@@ -131,9 +141,10 @@ export default function QuoteForm({
           message: submittedFormData.message,
         },
       });
-      setGtmEventFired(true);
+      
+      console.log("✅ GTM event fired successfully at", new Date().toISOString());
     }
-  };
+  }, []); // Empty dependency array since we use ref
 
   // Function to fire Lead Submitted GTM event
   const fireLeadSubmittedEvent = () => {
@@ -151,7 +162,8 @@ export default function QuoteForm({
     fireLeadSubmittedEvent();
 
     setFormSubmitted(false);
-    setGtmEventFired(false); // Reset GTM event flag for next submission
+    gtmEventFired.current = false; // Reset GTM event flag for next submission
+    submissionInProgress.current = false; // Reset submission flag
     setFormData({
       firstName: "",
       lastName: "",
@@ -230,12 +242,25 @@ export default function QuoteForm({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    console.log("📝 Form submit handler called");
 
-    // Comprehensive form validation
-    if (!validateForm()) {
+    // CRITICAL: Prevent duplicate submissions using ref for more reliable check
+    if (submissionInProgress.current || gtmEventFired.current) {
+      console.warn("⛔ Submission already in progress or GTM event already fired, aborting");
       return;
     }
 
+    // Comprehensive form validation
+    if (!validateForm()) {
+      console.log("❌ Form validation failed");
+      return;
+    }
+
+    console.log("✅ Form validation passed, starting submission");
+    
+    // Mark submission as in progress immediately
+    submissionInProgress.current = true;
     setIsSubmitting(true);
 
     try {
@@ -247,6 +272,8 @@ export default function QuoteForm({
         message: formData.message,
       };
 
+      console.log("📤 Sending form data to API");
+      
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
@@ -286,7 +313,9 @@ export default function QuoteForm({
         throw new Error(result.message || "Form submission failed");
       }
 
-      // Fire GTM event for successful form submission
+      console.log("✅ API response successful");
+
+      // Fire GTM event for successful form submission ONLY ONCE
       fireGTMEvent(formData);
 
       // Show success toast
@@ -298,7 +327,9 @@ export default function QuoteForm({
       // Set form as submitted
       setFormSubmitted(true);
     } catch (err) {
-      console.error("Error submitting form:", err);
+      console.error("❌ Error submitting form:", err);
+      // Reset submission flag on error so user can retry
+      submissionInProgress.current = false;
       // Show error toast instead of setting inline error
       toast.error(err.message || "Something went wrong. Please try again.");
     } finally {

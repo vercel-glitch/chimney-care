@@ -1,4 +1,4 @@
-import React, { useState, useCallback, memo } from "react";
+import React, { useState, useCallback, memo, useRef } from "react";
 import Container from "../common/Container";
 import FullContainer from "../common/FullContainer";
 import { CheckCircle, Loader, TextQuote } from "lucide-react";
@@ -162,7 +162,10 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formStarted, setFormStarted] = useState(false);
-  const [gtmEventFired, setGtmEventFired] = useState(false);
+  
+  // Use useRef for more reliable duplicate prevention
+  const gtmEventFired = useRef(false);
+  const submissionInProgress = useRef(false);
 
   // Function to handle first form interaction
   const handleFirstInteraction = () => {
@@ -181,19 +184,26 @@ export default function Contact() {
   };
 
   // Function to fire GTM event
-  const fireGTMEvent = (submittedFormData) => {
-    // Prevent duplicate GTM events
-    if (gtmEventFired) {
+  const fireGTMEvent = useCallback((submittedFormData) => {
+    // Prevent duplicate GTM events using ref
+    if (gtmEventFired.current) {
+      console.warn("⚠️ GTM event already fired for contact form, preventing duplicate");
       return;
     }
 
     if (typeof window !== "undefined" && window.dataLayer) {
       try {
+        console.log("🚀 Firing GTM form_submit event for contact_form");
+        
+        // Mark as fired BEFORE pushing to prevent race conditions
+        gtmEventFired.current = true;
+        
         window.dataLayer.push({
           event: "form_submit",
           form_id: "contact_form",
           form_name: "Contact Form",
           url: window.location.href,
+          timestamp: new Date().toISOString(),
           formData: {
             name: submittedFormData.name,
             email: submittedFormData.email,
@@ -202,12 +212,13 @@ export default function Contact() {
             zipcode: submittedFormData.zipcode,
           },
         });
-        setGtmEventFired(true);
+        
+        console.log("✅ GTM event fired successfully for contact form at", new Date().toISOString());
       } catch (error) {
-        // GTM form submit event failed
+        console.error("❌ GTM form submit event failed:", error);
       }
     }
-  };
+  }, []);
 
   // Function to fire Lead Submitted GTM event
   const fireLeadSubmittedEvent = () => {
@@ -229,7 +240,8 @@ export default function Contact() {
     fireLeadSubmittedEvent();
 
     setFormSubmitted(false);
-    setGtmEventFired(false); // Reset GTM event flag for next submission
+    gtmEventFired.current = false; // Reset GTM event flag for next submission
+    submissionInProgress.current = false; // Reset submission flag
     setFormData({
       name: "",
       email: "",
@@ -315,11 +327,24 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    console.log("📝 Contact form submit handler called");
 
-    if (!validateForm()) {
+    // CRITICAL: Prevent duplicate submissions
+    if (submissionInProgress.current || gtmEventFired.current) {
+      console.warn("⛔ Contact form submission already in progress, aborting");
       return;
     }
 
+    if (!validateForm()) {
+      console.log("❌ Contact form validation failed");
+      return;
+    }
+
+    console.log("✅ Contact form validation passed, starting submission");
+    
+    // Mark submission as in progress immediately
+    submissionInProgress.current = true;
     setIsSubmitting(true);
 
     try {
@@ -387,7 +412,9 @@ export default function Contact() {
       // Set form as submitted
       setFormSubmitted(true);
     } catch (err) {
-      console.error("Error submitting form:", err);
+      console.error("❌ Error submitting contact form:", err);
+      // Reset submission flag on error so user can retry
+      submissionInProgress.current = false;
       // Show error toast instead of setting inline error
       toast.error(err.message || "Something went wrong. Please try again.");
     } finally {
