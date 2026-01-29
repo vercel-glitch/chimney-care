@@ -95,7 +95,6 @@ export default function Service({
   service_why,
   form_head,
   features,
-  phone,
   project,
 }) {
   const router = useRouter();
