@@ -96,14 +96,35 @@ export default function Service({
   form_head,
   features,
   phone,
+  project,
 }) {
   const router = useRouter();
   const { service } = router.query;
   const breadcrumbs = useBreadcrumbs();
+  const gtm_id = project?.additional_config?.gtm_id || null;
+  const phone = project?.phone || "(000) 000-0000";
 
   return (
     <div>
       <Head>
+        {/* <!-- Google Tag Manager --> */}
+        {gtm_id && gtm_id !== "null" && gtm_id !== "undefined" && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                  if (!window.gtmLoaded && typeof window !== 'undefined') {
+                    window.gtmLoaded = true;
+                    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                    })(window,document,'script','dataLayer','${gtm_id}');
+                  }
+                `,
+            }}
+          />
+        )}
+        {/* <!-- End Google Tag Manager --> */}
         <meta charSet="UTF-8" />
         <title>
           {meta?.title?.replaceAll(
@@ -147,6 +168,18 @@ export default function Service({
           href={`${process.env.NEXT_PUBLIC_SITE_MANAGER}/images/${imagePath}/${favicon}`}
         />
       </Head>
+      {/* Google Tag Manager (noscript) */}
+      {gtm_id && gtm_id !== "null" && gtm_id !== "undefined" && (
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${gtm_id}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+      )}
+      {/* End Google Tag Manager (noscript) */}
 
       <Navbar logo={logo} imagePath={imagePath} phone={phone} data={services} />
 
@@ -322,7 +355,7 @@ export async function getServerSideProps({ req, params }) {
       service_description2: service_description2?.data[0] || null,
       city_name: city_name?.data[0]?.value || null,
       form_head: form_head?.data[0]?.value || null,
-      phone: project?.phone || "(000) 000-0000",
+      project: project || null,
     },
   };
 }
