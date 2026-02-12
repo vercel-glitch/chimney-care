@@ -650,6 +650,63 @@ export default function BeforeAfter({ project_id, niche, domain }) {
       after: "/st-images/beforeafter/deck/after4.png",
     },
   ];
+  const gateRepair = [
+    {
+      before: "/st-images/beforeafter/gateRepair/before1.jpeg",
+      before_alt: "before",
+      after: "/st-images/beforeafter/gateRepair/after1.jpeg",
+      after_alt: "after",
+    },
+   
+    {
+      before: "/st-images/beforeafter/GateRepair/before2.jpeg",
+      before_alt: "before",
+      after: "/st-images/beforeafter/GateRepair/after2.jpeg",
+      after_alt: "after",
+    },
+ 
+    {
+      before: "/st-images/beforeafter/GateRepair/before3.jpeg",
+      before_alt: "before",
+      after: "/st-images/beforeafter/GateRepair/after3.jpeg",
+      after_alt: "after",
+    },
+    {
+      before: "/st-images/beforeafter/gateRepair/before4.jpeg",
+      before_alt: "before",
+      after: "/st-images/beforeafter/gateRepair/after4.jpeg",
+      after_alt: "after",
+    }
+  ];
+  const hvac = [
+    {
+      before: "/st-images/beforeafter/hvac/before1.jpeg",
+      before_alt: "before",
+      after: "/st-images/beforeafter/hvac/after1.jpeg",
+      after_alt: "after",
+    },
+    {
+      before: "/st-images/beforeafter/hvac/before2.jpeg",
+      before_alt: "before",
+      after: "/st-images/beforeafter/hvac/after2.jpeg",
+      after_alt: "after",
+    },
+   
+    {
+      before: "/st-images/beforeafter/hvac/before3.jpeg",
+      before_alt: "before",
+      after: "/st-images/beforeafter/hvac/after3.jpeg",
+      after_alt: "after",
+    },
+   
+    {
+      before: "/st-images/beforeafter/hvac/before4.jpeg",
+      before_alt: "before",
+      after: "/st-images/beforeafter/hvac/after4.jpeg",
+      after_alt: "after",
+    },
+  ];
+ 
 
   // Memoize the selected images to prevent unnecessary re-computations
   const selectedImage = useMemo(() => {
@@ -687,6 +744,8 @@ export default function BeforeAfter({ project_id, niche, domain }) {
       Handyman: handyman,
       Towing: towing,
       Deck: Deck,
+      "gate repair": gateRepair,
+      "hvac": hvac,
     };
 
     const selectedImages = imageMap[niche] || chimeny;
