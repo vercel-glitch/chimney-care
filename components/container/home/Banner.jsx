@@ -120,10 +120,10 @@ export default function Banner({
 
               {/* Phone button - show on both pages */}
               <div className=" w-fit">
-                <button className="flex items-center gap-3 bg-gradient-to-br from-blue-600 via-sky-500 from-30% to-green-500 text-white px-6 py-3 rounded-2xl text-3xl font-semibold">
+                <a href={`tel:${phone}`} className="flex items-center gap-3 bg-gradient-to-br from-blue-600 via-sky-500 from-30% to-green-500 text-white px-6 py-3 rounded-2xl text-3xl font-semibold">
                   <Phone className="w-6 h-6" />
                   {phone}
-                </button>
+                </a>
               </div>
             </div>
           </div>
