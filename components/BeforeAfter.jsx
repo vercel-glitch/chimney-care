@@ -658,17 +658,16 @@ export default function BeforeAfter({ project_id, niche, domain }) {
       after_alt: "after",
     },
    
-    {
-      before: "/st-images/beforeafter/GateRepair/before2.jpeg",
+    { 
+      before:"/st-images/beforeafter/gateRepair/before3.jpeg",
       before_alt: "before",
-      after: "/st-images/beforeafter/GateRepair/after2.jpeg",
+      after: "/st-images/beforeafter/gateRepair/after3.jpeg",
       after_alt: "after",
     },
- 
     {
-      before: "/st-images/beforeafter/GateRepair/before3.jpeg",
+      before:"/st-images/beforeafter/gateRepair/before2.jpeg",
       before_alt: "before",
-      after: "/st-images/beforeafter/GateRepair/after3.jpeg",
+      after: "/st-images/beforeafter/gateRepair/after2.jpeg",
       after_alt: "after",
     },
     {
