@@ -41,24 +41,27 @@ const Logo = ({ logo, imagePath }) => {
   const imageSrc = useMemo(() => `${imagePath}/${logo.file_name}`, [imagePath, logo.file_name]);
 
   const dynamicLogoHeight = useMemo(() => {
-    return windowWidth < 768
-      ? 30
-      : windowWidth < 1200
-      ? Math.floor(logoHeight / 2)
-      : logoHeight;
+    return windowWidth < 760
+      ? 35 // smallest on mobile
+      : windowWidth < 1190
+      ? 50 // larger than mobile on tablet
+      : logoHeight; // full size on desktop (>= 1190)
   }, [windowWidth, logoHeight]);
 
   const dynamicLogoWidth = useMemo(() => {
-    return windowWidth >= 1200
+    return windowWidth >= 1190
       ? logoWidth
       : Math.floor((logoWidth / logoHeight) * dynamicLogoHeight);
   }, [windowWidth, logoWidth, logoHeight, dynamicLogoHeight]);
 
-  const logoStyle = useMemo(() => ({
-    height: windowWidth >= 768 ? `${dynamicLogoHeight}px` : "auto",
-    width: windowWidth >= 768 ? "auto" : 148,
-    maxWidth: "100%",
-  }), [windowWidth, dynamicLogoHeight]);
+  const logoStyle = useMemo(
+    () => ({
+      height: `${dynamicLogoHeight}px`,
+      width: "auto",
+      maxWidth: "100%",
+    }),
+    [dynamicLogoHeight]
+  );
 
   return (
     <Link
@@ -73,14 +76,13 @@ const Logo = ({ logo, imagePath }) => {
           src={imageSrc}
           title={`Logo - ${hostName}`}
           alt={`${logoText || "logo"} - ${hostName}`}
-          sizes="(max-width: 768px) 100px, (max-width: 1200px) 150px, 200px"
+          sizes="(max-width: 760px) 80px, (max-width: 1190px) 150px, 200px"
           style={logoStyle}
           // unoptimized={true}
-          className="scale-110"
         />
       ) : logoType === "text" ? (
         <h2
-          className="text-4xl font-extrabold py-1 whitespace-nowrap"
+          className="text-2xl md:text-4xl font-extrabold py-1 whitespace-nowrap"
           style={{
             fontSize: `${fontSize}px`,
             fontWeight: isBold ? "bold" : "normal",
