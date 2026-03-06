@@ -6,6 +6,8 @@ class MyDocument extends Document {
     const initialProps = await Document.getInitialProps(ctx);
     
     let gtm_id = null;
+    let head_script = null;
+    let body_script = null;
     
     try {
       // Get domain using existing utility
@@ -34,9 +36,11 @@ class MyDocument extends Document {
         const bulkData = await response.json();
         const logo = extractTagData(bulkData, 'logo');
         const project_id = logo?.data?.[0]?.project_id;
+
+        head_script = extractTagData(bulkData, 'head_script')?.data?.[0]?.value || null;
+        body_script = extractTagData(bulkData, 'body_script')?.data?.[0]?.value || null;
         
         if (project_id) {
-          // Fetch GTM ID from project info
           const projectResponse = await fetch(`${siteManager}/api/public/get_project_info/${project_id}`);
           if (projectResponse.ok) {
             const projectData = await projectResponse.json();
@@ -48,11 +52,11 @@ class MyDocument extends Document {
       console.error('Error fetching GTM ID in _document:', error);
     }
     
-    return { ...initialProps, gtm_id };
+    return { ...initialProps, gtm_id, head_script, body_script };
   }
 
   render() {
-    const { gtm_id } = this.props;
+    const { gtm_id, head_script, body_script } = this.props;
     const isValidGtmId = gtm_id && gtm_id !== 'null' && gtm_id !== 'undefined';
 
     return (
@@ -65,6 +69,9 @@ class MyDocument extends Document {
                 __html: `if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').then(function(registration){}).catch(function(registrationError){});});}`,
               }}
             />
+          )}
+          {head_script && (
+            <div dangerouslySetInnerHTML={{ __html: head_script }} />
           )}
         </Head>
         <body className="antialiased">
@@ -96,6 +103,9 @@ class MyDocument extends Document {
           
           <Main />
           <NextScript />
+          {body_script && (
+            <div dangerouslySetInnerHTML={{ __html: body_script }} />
+          )}
         </body>
       </Html>
     );
